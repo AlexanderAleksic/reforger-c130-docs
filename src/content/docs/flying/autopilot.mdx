@@ -1,0 +1,84 @@
+---
+title: Autopilot
+description: Engaging the C-130J autopilot, setting heading, altitude and speed, its limits and what disengages it.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers the autopilot: how to engage it, how to set its targets and what turns it off.
+
+The autopilot holds **heading**, **altitude** and **speed** together. Speed hold (autothrottle) is always part of it. While it is engaged, it flies the stick and the throttle for you.
+
+## Two panels, one autopilot
+
+There is an autopilot panel on the pilot's side and another on the co-pilot's side. They control the same autopilot:
+
+- whoever engages it "owns" it. Only that seat sees the **AP Heading**, **AP Altitude**, **AP Speed** and **Loiter radius** dials,
+- the other seat's switch shows **Autopilot in use (Pilot)** or **Autopilot in use (Copilot)** and cannot engage or disengage it.
+
+## Engaging
+
+<Steps>
+
+1. Trim the aircraft roughly level at the heading, altitude and speed you want.
+
+2. On your autopilot panel, use **Engage autopilot**.
+
+3. The autopilot captures your current state as its targets:
+   - **heading**: rounded to the nearest degree,
+   - **altitude**: rounded to the nearest 100 ft. If you are climbing or descending faster than 1 m/s, it adds a little lead (up to 150 m) so it levels off smoothly instead of overshooting,
+   - **speed**: rounded to the nearest 5 kt, kept between 60 and 360 kt.
+
+4. Let go of the stick. Any pitch or roll input disengages it (see below).
+
+</Steps>
+
+## Changing the targets
+
+Look at your autopilot panel, hold the interaction key on a dial and scroll:
+
+| Dial | Step per wheel notch | Range |
+|---|---|---|
+| **AP Heading N°** | 1° | 0-359°, wraps around |
+| **AP Altitude N ft** | 500 ft (snaps to multiples of 500) | 0-40,000 ft |
+| **AP Speed N kts** | 5 kt | 60-360 kt |
+
+Altitude is height above sea level, not above the ground. Watch the terrain.
+
+<Aside type="note">
+The speed the autopilot holds is your actual speed through the world (it includes wind and climb or descent), not indicated airspeed. In strong wind it differs from the airspeed shown on your instruments.
+</Aside>
+
+## How it flies
+
+| Limit | Value |
+|---|---|
+| Maximum bank | 60° (heading error × 1.2, so small heading changes use gentle bank) |
+| Maximum climb or descent | 20 m/s (about 3,900 ft/min), proportional to altitude error |
+| Maximum pitch | ±12° |
+| Throttle | Adjusted continuously to hold the target speed |
+
+- It turns toward a new heading by the shortest way.
+- A large altitude change is flown at up to 20 m/s, easing off as it nears the target.
+- The autopilot does not use the rudder.
+- Auto-trim and mouse flight pause while it is engaged.
+
+## Disengaging
+
+The autopilot turns off when:
+
+- **you move the stick**: any pitch or roll input above 20% disengages it at once (rudder input does not),
+- you use **Disengage autopilot** on the panel that engaged it,
+- you use **Turn off loiter** while loitering, which turns the autopilot off completely.
+
+When it disengages, the throttle stays where the autothrottle last set it. Check your power straight away.
+
+<Aside type="caution">
+Disengage the autopilot before landing. The approach checklist flags it with "DISENGAGE AUTOPILOT BEFORE TOUCHDOWN".
+</Aside>
+
+## Loiter
+
+The autopilot can also orbit a point you pick on the map. See [Loiter and orbit](/reforger-c130-docs/flying/loiter/).
+
+Next: [Loiter and orbit](/reforger-c130-docs/flying/loiter/).

@@ -1,0 +1,94 @@
+---
+title: Electrical and APU
+description: Battery, APU, generators and buses on the C-130J, what they power, the order they must be switched, and how the Systems page shows them.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page explains the C-130J's electrical system: the battery and APU you switch on before engine start, the five generators, and how to read the electrical block on the Systems page.
+
+## The power-up chain
+
+Power comes up in a fixed order. Each step needs the one before it:
+
+1. **Battery**: gives bus power. Needed before the APU can start.
+2. **APU** (auxiliary power unit): takes **15 seconds** to spool up. Needed before any engine can start.
+3. **Engines**: each engine drives its own generator once it is running.
+
+| Switch | Action names | Available when |
+| --- | --- | --- |
+| Battery switch | **Battery: ON** / **Battery: OFF** | ON: any time. OFF: only with the APU off and no engine running or starting. |
+| APU switch | **APU: START** / **APU: STOP (starting...)** / **APU: STOP** | Needs the battery on. STOP: only while no engine is running or starting. With the battery off it reads **APU (battery off)**. |
+
+Both switches take a 2-second hold and can only be used by the pilot or co-pilot from their seat.
+
+For the full start procedure see [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).
+
+<Aside type="note">
+You cannot stop the APU while any engine is running or starting, and you cannot turn the battery off while the APU is running. Shut down in reverse order: engines, then APU, then battery. See [Shutdown and parking](/reforger-c130-docs/basics/shutdown/).
+</Aside>
+
+## What needs power
+
+| System | Needs |
+| --- | --- |
+| APU start | Battery on. |
+| Engine start sequence | APU fully running, and all four engines off. |
+| Auxiliary hydraulic system | AC power: the APU or any engine generator online. See [Hydraulics](/reforger-c130-docs/systems/hydraulics/). |
+
+Other systems, including the lights, the cargo ramp, the landing gear and the flight controls, are not tied to the electrical system in this mod.
+
+The APU keeps running after engine start until you shut it down on the ground. The Engine page shows APU RUNNING while it is on. Leaving it running in flight is normal. It cannot be stopped while any engine is running.
+
+## Generators and buses
+
+The aircraft has five AC generators:
+
+- One on each of the four engines.
+- One on the APU.
+
+A generator comes online **3 seconds** after its engine or the APU is fully running, and drops offline the moment its engine stops. Each generator is rated at 40 kVA.
+
+Electrical demand is a real total of what is running:
+
+| Load | Demand |
+| --- | --- |
+| Aircraft powered (avionics, instruments, pumps) | 34 kVA |
+| Each running engine | +5.5 kVA |
+| Gear, flaps or ramp moving | +9 kVA |
+
+The demand is shared between all online generators. On the APU alone a single generator carries most of the load, at about 90 %. With all four engines and the APU online, each generator sits at roughly 30 %. If a generator drops out, the others take up its share and their load percentages rise.
+
+The AC side feeds four transformer-rectifiers, which supply the two DC buses:
+
+| Condition | DC bus voltage |
+| --- | --- |
+| Any generator online | 28.5 V |
+| Battery only | 24.2 V |
+| Battery off, nothing running | 0 V (cells blank) |
+
+AC line voltage is 115 V per phase. The three phases read a volt apart (115 / 116 / 114).
+
+## Reading the electrical block
+
+Open the **Systems** page on the centre-right screen (see [Cockpit displays](/reforger-c130-docs/systems/mfd/)). The electrical block is across the top:
+
+- Five generator columns: engines 1–4, then the APU. Each shows volts for phases A, B and C and the percentage load. An offline generator shows OFF on the first row and nothing below it.
+- Transformer-rectifier loads: blank unless a generator is online.
+- DC bus voltages.
+
+<Steps>
+
+1. Battery on: all generators read OFF, transformer-rectifiers are blank, and the DC buses read 24.2 V.
+2. APU running: after 3 seconds the APU column comes alive at about 90 % load, the transformer-rectifiers show load and the DC buses read 28.5 V.
+3. Each engine start: that engine's column comes online 3 seconds after the engine is running, and the load spreads across the generators.
+
+</Steps>
+
+## Failures
+
+Generators do not fail on their own. A generator goes offline only when its engine stops, for example after an engine failure, a fuel flameout or a shutdown. See [Engines and oil](/reforger-c130-docs/systems/engines/).
+
+If the aircraft is destroyed, the battery, APU and all engines are switched off.
+
+Next: [Hydraulics](/reforger-c130-docs/systems/hydraulics/).

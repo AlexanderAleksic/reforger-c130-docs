@@ -1,0 +1,83 @@
+---
+title: Paratroopers
+description: Paratrooper jumps from the C-130J, covering the jump light, jump positions, the jumpmaster, parachutes, exiting in flight and the cargo bay camera.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers dropping troops: the jump light, the jump positions, the jumpmaster's job, where to get parachutes, and the cockpit's view of the cargo bay.
+
+## Seating in the cargo bay
+
+| Position | How many | Notes |
+| --- | --- | --- |
+| Passenger seats | 24, plus one bombardier position | Normal seating. Available at any time. |
+| Jump positions | 24 | Standing positions for the stick. **Enter jump position** only appears while the jump light is **RED**. |
+| Jumpmaster | 1 | At the rear of the bay. **Enter jumpmaster position**. Controls the jump lights and the ramp. |
+
+## Parachutes
+
+The C-130 carries **50 parachutes** in a **Parachutes** storage at the front of the cargo bay. Open it and put one on before the jump.
+
+The **US Army paratrooper** character (available to Game Masters) already wears a parachute.
+
+<Aside type="note">
+The personal parachute, including how it opens and how you steer it, comes from the parachute mod the C-130 depends on, not from the C-130 itself. Use that mod's controls once you are out of the aircraft.
+</Aside>
+
+## Jump light
+
+The jump light has three states:
+
+| Light | Meaning |
+| --- | --- |
+| Off | Normal flight. Jump positions are locked. |
+| **RED** | Stand up. The jump positions open and troops can take them. |
+| **GREEN** | Go. The whole stick runs out of the ramp, then the light switches itself back off. |
+
+The light is set by the **jumpmaster** from his position, or by the **pilot or co-pilot** from the cockpit. The actions offered depend on the current state:
+
+- With the light off: **Jump light: RED**.
+- With the light red: **Jump light: GREEN - GO** or **Jump light: OFF**.
+
+**GREEN - GO** needs the ramp at **horizontal**. Until it is, the action shows *(set ramp horizontal first)*.
+
+## The jump sequence
+
+When the light goes green, the jump positions empty one after another, rearmost first, half a second apart. Each jumper runs down the bay and off the ramp edge on their own. The positions nearest the ramp are 5 m from the edge and the furthest are 16.5 m away, so jumpers leave about two-thirds of a second apart and a full stick of 24 is out in roughly 17 seconds.
+
+The light returns to off by itself once everyone has gone. Each position checks the ramp as its jumper starts running, so if the ramp leaves horizontal mid-stick, the remaining jumpers stay aboard.
+
+Jumping players are kept from flopping into a ragdoll for the first moment after they leave the aircraft.
+
+## Procedure: paratrooper drop
+
+<Steps>
+
+1. **Before takeoff:** troops take a parachute from the **Parachutes** storage and sit in the passenger seats. A player takes the jumpmaster position, or the pilots run the drop from the cockpit.
+2. **Run in:** fly toward the drop zone at a safe jump height, straight and level. The [Autopilot](/reforger-c130-docs/flying/autopilot/) helps here.
+3. **Red light:** a few minutes out, set **Jump light: RED**. Troops leave their seats and use **Enter jump position**.
+4. **Ramp:** set **Open ramp to horizontal (airdrop)**. It takes about 4 seconds. See [Cargo ramp](/reforger-c130-docs/cargo/ramp/).
+5. **Green light:** over the drop zone, set **Jump light: GREEN - GO**. Hold the aircraft steady for the roughly 17 seconds the stick takes.
+6. **Under canopy:** each jumper opens and steers their own parachute.
+7. **Close up:** when the light goes off, close the ramp.
+
+</Steps>
+
+## Leaving in flight without the jump light
+
+Passengers can also get out of the aircraft in flight with the normal get-out action, from a passenger seat, jump position or the jumpmaster position. You leave at your position's exit point and are protected from damage for 2 seconds. Make sure you are wearing a parachute first.
+
+The pilot and co-pilot cannot bail out.
+
+## Cargo bay camera
+
+The pilot or co-pilot can watch the cargo bay from the cockpit with **View Cargo Bay**. This switches to a fixed camera inside the cargo bay, useful for watching loads roll out or the stick leave without a jumpmaster.
+
+Press your interact key (<kbd>F</kbd> by default) to return to the normal view. The camera also closes if you open a menu, open the Game Master editor, or leave your seat. See [Cameras and views](/reforger-c130-docs/flying/cameras/) for the other views.
+
+## For mission makers: test tools
+
+The C-130 has two developer tools in the Workbench debug menu, under the C-130 category: **Spawn AI in jump spots**, which fills empty jump positions with AI paratroopers, and **Fire jump slide**, which starts the jump sequence (it can skip the ramp check for testing). Players do not see these in normal play.
+
+Next: [GBU-43/B MOAB](/reforger-c130-docs/advanced/moab/).

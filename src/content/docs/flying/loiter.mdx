@@ -1,0 +1,59 @@
+---
+title: Loiter and orbit
+description: Making the C-130J autopilot orbit a map point, changing the orbit radius and turning loiter off.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers loiter mode, where the autopilot flies a circle around a point you pick on the map. It is useful for holding, overwatch and waiting for a drop clearance.
+
+## Setting a loiter point
+
+<Steps>
+
+1. On your autopilot panel, use **Set loiter point (open map)**. The map opens.
+
+2. Click the point you want to circle. The map closes and the autopilot engages in loiter mode around that point.
+
+3. If the autopilot was off, it captures your current altitude and speed as its targets, as described in [Autopilot](/reforger-c130-docs/flying/autopilot/#engaging). If it was already on, it keeps the altitude and speed you had set.
+
+</Steps>
+
+If you close the map without clicking a point, nothing changes.
+
+## How the orbit is flown
+
+- **Direction**: chosen automatically. The aircraft joins the circle in whichever direction (left or right) needs the smaller turn from its current heading.
+- **Joining**: the aircraft steers onto the circle and banks into the turn as it nears it, so it settles on the circle without weaving.
+- **Bank**: the bank needed for the circle depends on your speed and the radius. It is limited to the autopilot's 60° maximum. A small radius at high speed needs a lot of bank. Slow down or use a larger radius.
+- **Altitude and speed** are held exactly as in normal autopilot. You can still change them with **AP Altitude** and **AP Speed**.
+- **Heading** is controlled by the orbit, so the **AP Heading** dial is hidden while you loiter.
+
+## Changing the radius
+
+While loitering, the seat that owns the autopilot sees **Loiter radius N m** on its panel. Hold the interaction key on it and scroll.
+
+| Item | Value |
+|---|---|
+| Default radius | 3,000 m |
+| Range | 1,000-6,000 m |
+| Step per wheel notch | 250 m |
+
+The radius you set is kept for the next loiter.
+
+## Turning loiter off
+
+- **Turn off loiter** on the autopilot panel stops the orbit **and disengages the autopilot**. The action label shows the grid of the current loiter point.
+- **Moving the stick** (pitch or roll input above 20%) also ends the orbit and disengages the autopilot.
+
+<Aside type="caution">
+If you use **Disengage autopilot** instead, the autopilot turns off but the loiter point is kept. **Turn off loiter** stays on the panel. Engaging the autopilot again returns you to the orbit. Use **Turn off loiter** when you want to clear the point.
+</Aside>
+
+After loiter ends, the throttle stays where the autothrottle left it. Take the controls and set your power.
+
+## Moving the loiter point
+
+**Set loiter point (open map)** is hidden while a loiter is active. To move the orbit, use **Turn off loiter**, then set a new point.
+
+Next: [Cameras and views](/reforger-c130-docs/flying/cameras/).

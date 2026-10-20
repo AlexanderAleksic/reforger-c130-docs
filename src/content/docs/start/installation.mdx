@@ -1,0 +1,81 @@
+---
+title: Installation
+description: How to install the C-130J Super Hercules mod, which mods it needs, how to add it to a server and where to find the aircraft in game.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers subscribing to the mod, the mods it depends on, running it on a server, and where the aircraft shows up once it is loaded.
+
+## Subscribing
+
+The mod is published on the Arma Reforger Workshop as **C-130J Super Hercules** by PandaMods. {/* TODO: workshop link */}
+
+<Steps>
+
+1. Start Arma Reforger and open **Workshop** from the main menu.
+2. Search for **C-130J Super Hercules** and open its page.
+3. Press **Subscribe**. The game downloads the mod together with every mod it depends on.
+4. Make sure the mod and its dependencies are enabled in your mod list before you start a scenario.
+
+</Steps>
+
+## Required mods
+
+The C-130J does not run on its own. These mods are dependencies and are downloaded with it:
+
+| Mod | What the C-130J uses it for |
+|---|---|
+| **MFD Framework** | The cockpit display screens and their pages. |
+| **WCS_Armaments** | Flare dispensers, the missile warning system and the aircraft's infrared signature (so heat-seeking weapons can lock it). |
+| **Propeller flight core** | The shared aircraft controls (the airplane keybind tab used for pitch, roll, yaw, throttle, gear, flaps, trim and brakes). |
+| **Grey Man's Chute Framework** | Freefall and personal parachutes for paratroopers who jump from the ramp. |
+| **TCAS_GPWS** | The ground proximity and traffic warning system fitted to the cockpit (see below). |
+
+The base game (Arma Reforger) is the only other requirement.
+
+## The warning system (TCAS/GPWS)
+
+The warning system is a separate mod, but the C-130J lists it as a dependency and the cockpit is wired up for it, so it is always present when you play. It adds:
+
+- **GPWS callouts and warnings**, such as SINK RATE, PULL UP, TERRAIN, TOO LOW GEAR, TOO LOW FLAPS and MINIMUMS.
+- **TCAS traffic advisories** for other aircraft near you.
+- **Stall warning** with stick shaker rumble on a gamepad.
+- **System tones**, including an overspeed warning. Flying too fast also damages the airframe.
+- A **gear horn** and a **takeoff configuration** warning.
+
+The pilot and co-pilot can switch both systems off from the cockpit with **Disable GPWS** and **Disable TCAS**. The GPWS state also shows on the checklist page (see [Cockpit displays](/reforger-c130-docs/systems/mfd/)).
+
+## Adding the mod to a dedicated server
+
+Add the C-130J and its dependencies to the `mods` list of your server configuration. A minimal example:
+
+```json
+"mods": [
+  { "modId": "69389797227E64A8", "name": "C-130J Super Hercules" },
+  { "modId": "64EE818E08AFCF94", "name": "MFD Framework" },
+  { "modId": "629B2BA37EFFD577", "name": "WCS_Armaments" },
+  { "modId": "69A8A34027DA65C5", "name": "Propeller flight core" },
+  { "modId": "69EEAA01F4A11001", "name": "Grey Man's Chute Framework" },
+  { "modId": "696EABC620F5193C", "name": "TCAS_GPWS" }
+]
+```
+
+There is no load order to manage: dependencies are loaded before the mods that need them. Every player who joins needs the same mods, and the game downloads them when they connect.
+
+<Aside type="tip">
+For network and performance notes for server admins, see [Multiplayer notes](/reforger-c130-docs/advanced/multiplayer/).
+</Aside>
+
+## Where to find the aircraft
+
+The mod does not add its own scenario. You get the aircraft into a game in one of these ways:
+
+| Where | What you find |
+|---|---|
+| **Game Master** | **C130J Super Hercules** in the vehicle list (US faction). Also the **M923A1 GBU-43/B Cargo** truck and the **Airdrop cargo box**. See [Game Master](/reforger-c130-docs/advanced/game-master/). |
+| **Vehicle spawners** | The C-130J is in the US faction vehicle catalog and uses a large vehicle slot, with a supply cost of 1200. Scenarios that request vehicles from the catalog, such as Conflict, can offer it where a large vehicle slot exists. |
+
+The aircraft is not an arsenal item. The cargo box is a storage container you can fill from an arsenal, see [Cargo crates](/reforger-c130-docs/cargo/crates/).
+
+Next: [Quick start: first flight](/reforger-c130-docs/start/quick-start/).

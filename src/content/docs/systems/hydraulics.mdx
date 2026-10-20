@@ -1,0 +1,63 @@
+---
+title: Hydraulics
+description: The C-130J's utility, booster and auxiliary hydraulic systems, where their pressure comes from, and how to read them on the Systems page.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page explains the three hydraulic systems on the C-130J, what drives each one, and how their pressures behave on the Systems page.
+
+## The three systems
+
+| System | Pressure source | Serves (as labelled) |
+| --- | --- | --- |
+| Utility | Pumps on engines 1 and 2 (left wing) | Landing gear, flaps, cargo ramp, normal brakes, nosewheel steering |
+| Booster | Pumps on engines 3 and 4 (right wing) | Flight control boost |
+| Auxiliary | Electric pump | Backup. The only source with the engines shut down. Needs AC power from the APU or any engine generator. |
+
+A system is pressurised as long as at least one of its pumps is driven. Engine 1 or engine 2 alone keeps the utility system up. Engine 3 or engine 4 alone keeps the booster system up.
+
+<Aside type="note">
+In this version the hydraulic pressures are shown on the display only. The gear, flaps, ramp, brakes and flight controls keep working whatever the gauges read. Losing both engines on one side does not take away your gear or flaps.
+</Aside>
+
+## How pressure behaves
+
+| Value | Figure |
+| --- | --- |
+| Normal system pressure | 3,000 psi |
+| Build-up once a pump is driven | 900 psi per second (about 3.5 s from zero) |
+| Bleed-down with no pump | 450 psi per second (about 7 s to zero) |
+| Sag while gear, flaps or ramp move | 700 psi, for about 4 s after the command |
+
+Pressure does not snap on and off. It climbs when a pump starts, bleeds away when the pump stops, and dips while something is moving.
+
+When you raise or lower the gear, move the flaps or move the ramp, the utility and booster pressures dip to about 2,300 psi for around 4 seconds. The auxiliary system does not dip. Moving these items also adds 9 kVA of electrical load for the same time (see [Electrical and APU](/reforger-c130-docs/systems/electrical/)).
+
+## Brakes
+
+The Systems page shows two brake pressures:
+
+- **Normal brakes**: the same as utility pressure.
+- **Emergency brakes**: an accumulator that charges from the utility system whenever utility pressure is above 500 psi. It charges at 40 psi per second, up to 3,000 psi, which takes about 75 seconds from empty. It keeps its charge after the engines stop.
+
+## Rudder boost
+
+The rudder boost readouts show utility and booster pressure, but read 0 when that system is below 500 psi.
+
+## Reading the hydraulics block
+
+Open the **Systems** page on the centre-right screen (see [Cockpit displays](/reforger-c130-docs/systems/mfd/)). Pressures below 50 psi read 0.
+
+What to expect during a normal start:
+
+| Stage | Utility | Booster | Auxiliary |
+| --- | --- | --- | --- |
+| Battery only | 0 | 0 | 0 |
+| APU running | 0 | 0 | 3,000 |
+| Engine 1 running | 3,000 | 0 | 3,000 |
+| Engine 3 running | 3,000 | 3,000 | 3,000 |
+
+If the utility or booster pressure falls to zero in flight, both engines feeding that system have stopped. Check the Engine page and see [Engines and oil](/reforger-c130-docs/systems/engines/).
+
+Next: [Fuel](/reforger-c130-docs/systems/fuel/).

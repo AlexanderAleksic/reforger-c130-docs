@@ -1,0 +1,82 @@
+---
+title: Taxi and takeoff
+description: Releasing the parking brake, steering on the ground, takeoff configuration, rotation, gear and flaps retraction in the C-130J.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page takes you from four running engines to a clean climb-out.
+
+## Before you move
+
+The **BEFORE TAKEOFF** checklist on the checklist display shows what the aircraft expects:
+
+- all four engines running,
+- cargo secured, ramp and crew door closed,
+- **flaps set** (down) for takeoff,
+- trim near neutral,
+- gear down, thrust reverse off,
+- lights on, enough fuel.
+
+When everything is in order the hint reads **CLEARED FOR TAKEOFF**.
+
+<Aside type="caution">
+Unsecured cargo slides when you rotate. Tie it down first. See [Loading vehicles](/reforger-c130-docs/cargo/vehicles/).
+</Aside>
+
+## Taxiing
+
+<Steps>
+
+1. **Release the parking brake.** Press <kbd>Space</kbd> or use **Parking brake: SET - release** on the gear panel.
+
+2. **Add a little throttle** with <kbd>Shift</kbd>. At 0% the engines idle and give no thrust. A small amount is enough to roll. Use <kbd>Ctrl</kbd> to take it off again.
+
+3. **Steer with the rudder keys** <kbd>Q</kbd>/<kbd>E</kbd>. They turn the nose wheel. <kbd>A</kbd>/<kbd>D</kbd> only move the ailerons. Steering has full authority up to about 29 km/h, so keep taxi speeds low for tight turns.
+
+4. **Brake by holding** <kbd>Space</kbd>. The brakes are strong enough to stop the fully loaded aircraft firmly. They only work while the wheels are on the ground.
+
+</Steps>
+
+To back up, engage thrust reverse (<kbd>U</kbd>) and add a little throttle. Turn it off again before you taxi forward. See [Approach and landing](/reforger-c130-docs/basics/landing/#thrust-reverse).
+
+Below walking pace the tyres hold the aircraft against the wind, so a parked or slowly taxiing C-130 does not swing into a strong crosswind. At normal taxi speed a crosswind pushes the tail, so expect to correct with rudder.
+
+## Takeoff
+
+<Steps>
+
+1. **Line up** on the runway centreline.
+
+2. **Set takeoff flaps.** Press <kbd>F</kbd> (or **Lower flaps**). The C-130 has one flap setting, and it is used for takeoff and landing.
+
+3. **Check trim.** It should be within about ±4.5° of neutral. Press <kbd>Home</kbd> (or **Reset trim**) to centre it. The aircraft spawns with a slight 1.5° nose-up trim, which is fine.
+
+4. **Lights** (optional): tap <kbd>L</kbd> for the taxi lights, hold <kbd>L</kbd> for the landing lights.
+
+5. **Full throttle.** Hold <kbd>Shift</kbd> for about 2 seconds to reach 100%. Keep straight with <kbd>Q</kbd>/<kbd>E</kbd>. Nose wheel steering fades as you speed up and is down to 12% at about 160 km/h, so make small corrections.
+
+6. **Rotate.** At roughly **190-200 km/h (about 105 kt)**, ease back on <kbd>S</kbd> and raise the nose about 8-10°. A heavy aircraft needs more speed.
+
+7. **Gear up.** Once you are climbing, press <kbd>N</kbd>. The gear cannot retract while weight is on the wheels or below about 2.5 m above the ground. It takes about 3 seconds to retract.
+
+8. **Flaps up.** Once you are safely climbing and accelerating, press <kbd>F</kbd> to raise the flaps. They take 2 seconds to move, and you have to wait 2 seconds before you can move them again.
+
+</Steps>
+
+<Aside type="note">
+The rotation speed is an estimate worked out from the aircraft's wing and weight values, not a fixed number in the mod. A heavily loaded aircraft needs more speed. If the nose comes up but the aircraft will not fly, lower the nose slightly and let the speed build.
+</Aside>
+
+## After takeoff: trim and assist
+
+With flight assist on (the default), you do not need to hold the stick in the climb:
+
+- While you hold pitch input, trim slowly takes over the load.
+- When you let go of the stick, the aircraft holds the pitch angle it had at that moment.
+
+Use <kbd>Page Up</kbd> / <kbd>Page Down</kbd> to trim by hand. See [Trim and flaps](/reforger-c130-docs/flying/trim-and-flaps/) and [Handling and flight model](/reforger-c130-docs/flying/flight-model/).
+
+The checklist switches to **CLIMB / CRUISE** once the gear is up and you are more than 900 m above the ground. It reminds you if the gear or flaps are still down. A gear warning light comes on if you climb above about 30 m with the gear still down.
+
+Next: [Approach and landing](/reforger-c130-docs/basics/landing/).

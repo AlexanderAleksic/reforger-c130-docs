@@ -1,0 +1,76 @@
+---
+title: Trim and flaps
+description: Using pitch trim, auto-trim, trim reset and the flaps on the C-130J.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page covers the pitch trim (manual and automatic) and the flaps.
+
+## Pitch trim
+
+Trim moves the elevator's neutral position, so the aircraft holds a pitch attitude without you holding the stick.
+
+| Item | Value |
+|---|---|
+| Range | ±30° of elevator (shown in degrees on the trim dial) |
+| Manual trim speed | 3° per second while you hold the key |
+| Spawn setting | 1.5° nose up |
+| Neutral band for takeoff | within about ±4.5° |
+
+### Adjusting trim
+
+- **Keys**: hold <kbd>Page Up</kbd> to trim nose up and <kbd>Page Down</kbd> to trim nose down. Going from neutral to full trim takes 10 seconds.
+- **Cockpit dial**: look at the trim wheel, hold the interaction key and scroll. The dial reads **Trim N°**. Each wheel step moves it 3°.
+- **Reset**: press <kbd>Home</kbd> (gamepad: right stick click) or use **Reset trim** on the trim wheel. Trim returns to exactly neutral.
+
+Only the crew member who has the controls can trim.
+
+### Auto-trim
+
+With flight assist on (the default), trim also works by itself:
+
+- **Stick-force relief**: while you hold pitch input, trim slowly takes over that input. You need less and less stick to hold a climb or descent.
+- **Attitude hold**: when you release the stick, the current pitch angle is captured and trim keeps the aircraft there. Climb at 8°, let go, and it keeps climbing at 8°.
+- **Manual trim wins**: holding <kbd>Page Up</kbd>/<kbd>Page Down</kbd> overrides the hold. When you let go, the new attitude is captured.
+- **Autopilot**: auto-trim pauses while the autopilot is engaged.
+
+Because auto-trim keeps adjusting, the trim value drifts during flight. Before takeoff, press <kbd>Home</kbd> so the trim is back inside the neutral band. The checklist shows **TRIM NEUTRAL**, and the takeoff configuration warning checks it.
+
+<Aside type="tip">
+If the aircraft wants to pitch on its own after a long climb or descent, press <kbd>Home</kbd> to reset trim and re-trim from neutral.
+</Aside>
+
+## Flaps
+
+The C-130 has a single flap setting: up or down.
+
+| Item | Value |
+|---|---|
+| Positions | Up / down |
+| Deflection when down | 30° |
+| Travel time | 2 seconds |
+| Wait between moves | 2 seconds |
+
+### Using the flaps
+
+- **Key**: <kbd>F</kbd> (gamepad: D-pad right) toggles them.
+- **Cockpit**: the flap lever offers **Lower flaps** / **Raise flaps**.
+
+### What they do
+
+- **More lift.** You can fly about 10 km/h slower before the stall. You lift off sooner and approach slower.
+- **More drag.** The aircraft slows down faster and needs more power to hold speed.
+- **Pitch change.** Expect a pitch change as they move. Flight assist and trim absorb most of it.
+
+### When to use them
+
+| Phase | Flaps |
+|---|---|
+| Takeoff | **Down** (the BEFORE TAKEOFF checklist asks for "FLAPS SET") |
+| Climb and cruise | **Up** (the CLIMB / CRUISE checklist asks for "FLAPS UP") |
+| Approach and landing | **Down** |
+
+The mod does not set a maximum flap speed. Raise them once you are climbing safely after takeoff, and lower them as you slow down for the approach.
+
+Next: [Autopilot](/reforger-c130-docs/flying/autopilot/).

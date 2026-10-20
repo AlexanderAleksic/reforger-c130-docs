@@ -1,0 +1,98 @@
+---
+title: Airdrop
+description: Parachute-dropping crates and vehicles from the C-130J using the release computer on the Map display, the CDS drop prediction and the parachute behaviour.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers dropping cargo by parachute in flight (a container delivery, or CDS, drop): the release computer, the drop prediction marker, how loads fall, and a step-by-step procedure.
+
+## How a drop works
+
+When a load is released it rolls down the bay and off the ramp. The rearmost load always goes first. The roll-out takes time: loads move at an average of 4 m/s, speeding up as they go, so a load at the back of the bay leaves after about 2 seconds and one at the front after about 5. The aircraft keeps flying during that time, and the release computer allows for it.
+
+As the load leaves it keeps the aircraft's speed plus a push out of the ramp, then its parachute opens. An alarm sounds in the aircraft whenever a load is released in flight.
+
+## Release computer (Map display)
+
+The release computer is built into the **Map** page of the map display. While that page is shown it draws a crosshair at the point where the **next** load would land if you released it now. See [Cockpit displays](/reforger-c130-docs/systems/mfd/) for switching pages.
+
+What the page shows:
+
+- **Crosshair** with the distance to the impact point (metres, or km above 1,000 m). If the point is beyond the edge of the display the crosshair parks at the edge and the status line says **OFF SCALE**.
+- **Status line**: the load's name and weight in kg, the **LEAD** (the roll-out time the computer is allowing for, in seconds), and the impact point as a map grid reference with how many 100 m grid squares ahead it is.
+- **Countdown**: after each release the fall time flashes large in the middle of the page for 3 seconds (*NN S TO IMPACT*). A smaller line keeps counting down (*IMPACT IN NN S*) until the load lands.
+- **Last drop**: once a load has landed, the line shows how far it missed the predicted point (*LAST DROP ... MISSED BY NN M*).
+- A small line of technical terms (ground speed, height, fall time, slide, wind and velocity terms) is also shown. You can ignore it.
+
+If there is nothing to show, the status line says **BAY EMPTY - NOTHING TO RELEASE** or **NO SOLUTION - TOO LOW OR TOO SLOW**.
+
+### Release button
+
+On the Map page the display offers **Release cargo**. One press releases exactly one load, the rearmost, and the label names it: **RELEASE** followed by the load's name. It greys out with a reason when the ramp is not horizontal (*Release ... (ramp not horizontal)*) or when the bay is empty (*Release cargo - BAY EMPTY*).
+
+### Release scale
+
+**Release scale** sets how the crosshair is scaled to the map. Leave it on **AUTO**, which follows the map's own zoom. The label shows how many 100 m grid squares wide the display is, for example *Release scale: AUTO (12 tiles wide)*.
+
+Pressing it cycles through manual scales (8, 12, 19, 31, 42 and 61 squares wide) and back to AUTO. Manual scales are only a fallback if AUTO ever looks wrong: count the grid squares across the display and pick the matching setting. The scale is your own setting and does not affect other crew.
+
+The GBU-43/B MOAB is also dropped through this release system. See [GBU-43/B MOAB](/reforger-c130-docs/advanced/moab/).
+
+## CDS drop prediction marker
+
+The pilot or co-pilot can also turn on **CDS drop prediction: OFF (toggle)** in the cockpit. While it is **ON**, a **CDS IMPACT** marker on your map (full-screen map and the map display) follows the predicted impact point of the next load.
+
+- It only shows while there is cargo aboard and the aircraft is at least 20 m above the ground.
+- You can only switch it on with cargo aboard.
+- It is personal: it only appears on your own map.
+
+## How loads fall
+
+| Load | Parachute | Descent rate |
+| --- | --- | --- |
+| Cargo crate (1,000 kg) | 1 canopy | 6 m/s |
+| Vehicle | Cluster of 3 canopies | Scales with weight |
+
+Descent rate is 6 m/s for a 1,000 kg load and grows with the square root of weight, limited to between 3.6 m/s and 12 m/s. A 4,000 kg vehicle comes down at the 12 m/s maximum.
+
+Under the canopy:
+
+- The load keeps the aircraft's forward speed at release and loses it gradually (about 70 percent per second). In practice it travels about 1.4 seconds' worth of your ground speed forward of the point where it left the ramp.
+- It drifts with the wind for the whole descent. The wind is taken at the moment of release and held, which is what the release computer assumes too.
+- It levels itself to the horizon while descending.
+- The canopy releases about 1.5 m above the ground and the load drops the last bit.
+
+Vehicles ride the drop protected: they take no damage during the descent and for 5 seconds after touchdown, and their handbrake is set on landing so they do not roll away. Crates settle in place a few seconds after landing.
+
+Every dropped load gets a **CDS DROP** marker on everyone's map. Crates are labelled *CARGO*, vehicles with the vehicle's name. The marker follows the predicted landing point during the descent, then marks the actual landing spot. A crate's marker is removed when someone opens it (see [Cargo crates](/reforger-c130-docs/cargo/crates/#at-the-drop-zone)).
+
+## Choosing speed and altitude
+
+The mod does not set a required drop speed or altitude. The release computer works at any height above the ground, as long as the impact point is not above you. Keep these points in mind:
+
+- **Lower is more accurate.** Fall time drives wind drift, so a shorter fall drifts less. A crate dropped from 300 m above the ground falls for about 53 seconds; from 150 m, about 28 seconds.
+- **Fly straight and level.** The computer predicts from your current speed and direction. Turning, climbing or diving during the roll-out moves the real exit point away from the one it solved for.
+- **Slower means a shorter throw.** The forward throw grows with ground speed.
+- **Watch the trim.** A load rolling aft pitches the nose up until it leaves. Be ready to hold the nose down. See [Handling and flight model](/reforger-c130-docs/flying/flight-model/).
+
+## Procedure: CDS drop
+
+<Steps>
+
+1. **Before takeoff:** load and secure the cargo (see [Loading vehicles](/reforger-c130-docs/cargo/vehicles/) and [Cargo crates](/reforger-c130-docs/cargo/crates/)). Set each crate's beacon timing.
+2. **Set up the display:** put the map display on the **Map** page and check **Release scale** reads AUTO.
+3. **Run in:** line up on the drop zone at your chosen height, straight and level, well before the release point. The [Autopilot](/reforger-c130-docs/flying/autopilot/) can hold heading, altitude and speed for you.
+4. **Open the ramp to horizontal:** the pilot or co-pilot chooses **Open ramp to horizontal (airdrop)**, or the jumpmaster does it from the rear. It takes about 4 seconds. See [Cargo ramp](/reforger-c130-docs/cargo/ramp/).
+5. **Aim:** watch the crosshair move across the map toward the drop zone. The status line confirms which load is next and its weight.
+6. **Release:** when the crosshair is on the drop zone, press **RELEASE**. Hold the aircraft steady while the load rolls out.
+7. **Further loads:** each one needs its own press and its own aim. To drop everything in one go instead, use **Unload all cargo** in the cockpit, which releases the loads rearmost first, half a second apart.
+8. **Close up:** when the bay is empty (or you are done), close the ramp and climb away. Check the **LAST DROP** line to see how close you got.
+
+</Steps>
+
+<Aside type="caution">
+**Unload rear cargo** and **Unload all cargo** in the cockpit also drop loads in flight. They use the same roll-out but do not aim for you, so use them with the drop prediction marker or when accuracy does not matter.
+</Aside>
+
+Next: [LAPES](/reforger-c130-docs/cargo/lapes/).

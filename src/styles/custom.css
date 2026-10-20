@@ -1,0 +1,23 @@
+/* Keep the stock Starlight look; only calm the accent to a neutral blue. */
+:root {
+	--sl-color-accent-low: #1c2a3d;
+	--sl-color-accent: #3a6ea5;
+	--sl-color-accent-high: #c9dbef;
+}
+:root[data-theme='light'] {
+	--sl-color-accent-low: #dbe7f4;
+	--sl-color-accent: #2f5f91;
+	--sl-color-accent-high: #1a3554;
+}
+
+/* Keyboard keys inline in text */
+kbd {
+	font-family: var(--sl-font-system-mono);
+	font-size: 0.85em;
+	padding: 0.1em 0.4em;
+	border: 1px solid var(--sl-color-gray-5);
+	border-bottom-width: 2px;
+	border-radius: 4px;
+	background: var(--sl-color-gray-6);
+	white-space: nowrap;
+}

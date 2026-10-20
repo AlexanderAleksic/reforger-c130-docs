@@ -1,0 +1,62 @@
+---
+title: Cameras and views
+description: Free look in the cockpit, the third-person chase camera, the cargo bay camera and the screen focus view in the C-130J.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page covers every view the C-130 offers: cockpit free look, the third-person camera, the cargo bay camera and the screen focus view.
+
+## Cockpit free look
+
+The pilot and co-pilot seats use helicopter-style free look.
+
+**Mouse and keyboard**
+- The mouse always looks around. You do not need to hold a key.
+- If **Mouse aircraft control** is on in the vanilla gameplay settings, the mouse flies the aircraft instead. Hold **Freelook** (<kbd>Alt</kbd>) to look around, or tap it to switch to looking until you tap it again. While the mouse is flying, your view slowly returns to straight ahead. See [Controls and keybinds](/reforger-c130-docs/basics/controls/#mouse-flight).
+
+**Gamepad**
+- With the vanilla gamepad aircraft control setting on, the view stays locked forward and the right stick flies the aircraft.
+- Hold the vanilla **Freelook** modifier to look around with the right stick. While it is held, right-stick pitch and roll inputs are ignored. Your other controls (rudder and throttle on the left stick) keep working.
+- With the gamepad aircraft control setting off, the right stick looks around freely.
+
+Passengers, paratroopers and the jumpmaster always have free look.
+
+## Third-person camera
+
+The vanilla third-person vehicle camera is tuned for the C-130:
+
+- the camera **lags behind** turns and pitch changes, so you can see the aircraft rotate,
+- the lag is limited to 40° sideways and 30° up or down,
+- it **recentres smoothly** behind the aircraft, over about 3 seconds sideways and 2 seconds vertically.
+
+This only changes the camera when you are in a C-130. Other vehicles are not affected.
+
+## Cargo bay camera
+
+From the cockpit you can watch the cargo bay without leaving your seat:
+
+1. As pilot or co-pilot, use **View Cargo Bay** on the cargo panel or at your seat.
+2. A fixed camera inside the bay shows the cargo area with a wide 80° field of view.
+3. Press the interaction key (<kbd>F</kbd>, gamepad X) to return to the cockpit.
+
+While the view is up **your flight controls keep working**, so you can keep flying while checking a load or a drop. The view closes on its own if you open a menu or the Game Master editor, leave your seat or die.
+
+Use it to watch vehicles load and unload, check tie-downs, or monitor a drop. See [Loading vehicles](/reforger-c130-docs/cargo/vehicles/) and [Airdrop](/reforger-c130-docs/cargo/airdrop/).
+
+## Screen focus view
+
+The engine display and the map display are hard to read from the seat, so they have a **Focus screen** action:
+
+1. Look at the screen and use **Focus screen**.
+2. The camera moves close to the screen with a narrow 30° field of view, so the page fills your view. It sits on the side you were looking from and moves in front of anything in the way, such as the yoke or a crew member.
+3. The view stays attached to the screen as the aircraft banks and pitches.
+4. Press the interaction key again (<kbd>F</kbd>, gamepad X) to return.
+
+Like the cargo bay camera, **your flight controls stay live**, and the view closes if you open a menu, leave the aircraft or die. Anyone seated in the aircraft who can reach the screen can use it. See [Cockpit displays (MFDs)](/reforger-c130-docs/systems/mfd/) for what the screens show.
+
+<Aside type="caution">
+Both camera views close with the interaction key, and by default that key is also **Flaps** (<kbd>F</kbd>). If closing a view also moves your flaps, rebind Flaps. See [Rebinding](/reforger-c130-docs/basics/controls/#rebinding).
+</Aside>
+
+Next: [Cockpit displays (MFDs)](/reforger-c130-docs/systems/mfd/).

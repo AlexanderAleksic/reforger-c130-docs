@@ -1,0 +1,63 @@
+---
+title: LAPES
+description: Low Altitude Parachute Extraction with the C-130J, its speed and height envelope, and how to fly it.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers LAPES (Low Altitude Parachute Extraction System): pulling a load out of the bay a few metres above the ground so it lands and skids to a stop, instead of floating down under a canopy.
+
+## What it is
+
+On a LAPES run the aircraft flies very low over a flat strip with the ramp open. An extraction chute pulls the rearmost load out of the bay. Instead of descending slowly, the load drops the short distance to the ground and slides along it until friction stops it.
+
+Compared with a normal [Airdrop](/reforger-c130-docs/cargo/airdrop/):
+
+- The load lands almost directly under the aircraft, with no long canopy descent and very little wind drift.
+- It needs a long, flat, clear strip, because the load keeps most of its speed and skids a long way.
+- It is flown at very low height, so there is little room for error.
+
+## The envelope
+
+**LAPES extraction (rear)** only works when all three conditions are met:
+
+| Condition | Value |
+| --- | --- |
+| Height above ground | 12 m (about 40 ft) or lower |
+| Ground speed | 30 m/s (108 km/h, about 58 kt) or faster |
+| Ramp | Horizontal **or** fully open |
+
+If you are outside the envelope the action greys out and says why: **Open the ramp first**, or the height and speed limits. The action only appears for the pilot or co-pilot, and only while there is cargo aboard.
+
+## What the load does
+
+- While still in the air, the extraction chute bleeds off about 60 percent of the load's forward speed per second.
+- Once on the ground it skids, losing about 6 m/s of speed every second. A load leaving at 60 m/s stops in about 10 seconds and roughly 300 m.
+- Below about 1.5 m/s it comes to rest.
+- Vehicles are protected from damage during the extraction and for 5 seconds after they stop, and their handbrake is set.
+
+## Procedure
+
+<Steps>
+
+1. Load and secure the cargo as normal. See [Loading vehicles](/reforger-c130-docs/cargo/vehicles/).
+2. Pick a long, flat, clear strip. A runway or a straight stretch of open ground is ideal. Allow a few hundred metres beyond the release point for the skid.
+3. Open the ramp to **horizontal** or **fully open** before the run. Doing this at a safe height means you are not working the ramp near the ground. See [Cargo ramp](/reforger-c130-docs/cargo/ramp/).
+4. Configure for slow flight with flaps as needed, and descend onto the strip, keeping above 108 km/h ground speed. See [Approach and landing](/reforger-c130-docs/basics/landing/) for low and slow handling.
+5. Level off at 12 m or lower, straight down the strip.
+6. Use **LAPES extraction (rear)**. The rearmost load rolls out of the bay and is extracted.
+7. Hold the aircraft steady while the load rolls out. As it moves aft the nose pitches up, so be ready to hold it down.
+8. For more loads, repeat the action, one load per use.
+9. Climb away, close the ramp, and clean up.
+
+</Steps>
+
+<Aside type="danger">
+At 12 m there is no margin for a nose-up pitch, a sink or a misjudged flare. Add power and climb away the moment the run goes wrong. Have one pilot fly while the other works the extraction. See [Cockpit, seats and crew](/reforger-c130-docs/basics/cockpit-and-crew/) for who flies and who works the cargo.
+</Aside>
+
+<Aside type="tip">
+The roll-out takes time: about 2 seconds for a load at the back of the bay and up to about 5 seconds for one at the front. Start the extraction early enough that the load leaves over the strip, not past its end.
+</Aside>
+
+Next: [Paratroopers](/reforger-c130-docs/cargo/paratroopers/).

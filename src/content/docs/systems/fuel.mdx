@@ -1,0 +1,143 @@
+---
+title: Fuel
+description: C-130J fuel tanks, consumption and endurance, the fuel panel (transfer modes and crossfeed), fuel dump, the Fuel page and refuelling.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers the C-130J's four wing tanks, how fast the engines burn fuel, how to move fuel between tanks with the fuel panel, how to dump fuel, and how to read the Fuel page.
+
+## Tanks
+
+The aircraft carries fuel in four wing tanks:
+
+| Tank | Capacity | At spawn |
+| --- | --- | --- |
+| LH OUTER (left outer) | 5,800 L | 2,248 L |
+| LH INNER (left inner) | 7,100 L | 2,752 L |
+| RH INNER (right inner) | 7,100 L | 2,752 L |
+| RH OUTER (right outer) | 5,800 L | 2,248 L |
+| **Total** | **25,800 L** | **10,000 L (about 39 %)** |
+
+Fuel has weight (0.81 kg per litre), and the flight model uses it. A full load is about 20,900 kg of fuel. The aircraft gets lighter as you burn or dump fuel. The Weight page shows the current fuel weight (see [Cockpit displays](/reforger-c130-docs/systems/mfd/)).
+
+## Consumption and endurance
+
+Fuel burn depends only on throttle and how many engines are running:
+
+| Throttle | Per engine | All four engines |
+| --- | --- | --- |
+| Idle | 150 L/h | 600 L/h |
+| 50 % | 500 L/h | 2,000 L/h |
+| Full | 850 L/h | 3,400 L/h |
+
+Burn rises in a straight line between idle and full. A stopped or failed engine burns nothing.
+
+Typical endurance with all four engines running:
+
+| Fuel load | Full throttle | 50 % throttle | Idle |
+| --- | --- | --- | --- |
+| Spawn load (10,000 L) | about 2 h 55 min | about 5 h | about 16 h 40 min |
+| Full tanks (25,800 L) | about 7 h 35 min | about 12 h 54 min | about 43 h |
+
+You don't need to work this out yourself. The Fuel page and the Engine page both show the endurance at your current throttle.
+
+### Low fuel
+
+- At **15 %** total fuel (about 3,870 L) the FUEL LOW caution and the master caution come on.
+- The checklist wants at least **25 %** (about 6,450 L) before takeoff.
+- When an engine gets no fuel for **4 seconds** it flames out and shuts down. It is not damaged, but it can only be restarted by running the full start sequence with all four engines off. See [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).
+
+## Engine feed and crossfeed
+
+Each engine has its own tank:
+
+| Engine | Own tank |
+| --- | --- |
+| 1 (left outer) | LH OUTER |
+| 2 (left inner) | LH INNER |
+| 3 (right inner) | RH INNER |
+| 4 (right outer) | RH OUTER |
+
+The **crossfeed valve** decides where the engines draw from:
+
+- **Crossfeed OPEN** (the default at spawn): every engine draws from all tanks together, in proportion to what each tank holds. The tanks drain evenly and the aircraft stays balanced. An engine only runs dry when all the fuel is gone.
+- **Crossfeed SHUT**: each engine draws only from its own tank. When that tank runs dry, that engine flames out even if the other tanks still have fuel.
+
+<Aside type="caution">
+With the crossfeed shut, keep an eye on each tank. The Fuel page warns TANK DRY WITH CROSSFEED SHUT - ENGINE WILL FLAME OUT. Open the crossfeed and the engine can draw from the other tanks again.
+</Aside>
+
+## The fuel panel
+
+The pilot or co-pilot can use the fuel panel from their seat. It has three actions:
+
+| Action | What it does |
+| --- | --- |
+| **Fuel transfer** | Cycles the transfer mode. The label shows the mode, whether fuel is flowing, and the current balance, for example **Fuel: AUTO BALANCE (flowing) - L heavy 520 L**. |
+| **Crossfeed** | Opens or shuts the crossfeed valve. Reads **Crossfeed: OPEN (all tanks feed all engines)** or **Crossfeed: SHUT (each engine on its own tank)**. |
+| **Tank quantities** | Readout only. Shows the four tanks in litres, left to right: **Tanks L outer \| inner   R inner \| outer (L)**. |
+
+### Transfer modes
+
+Each use of **Fuel transfer** steps to the next mode, in this order:
+
+| Mode | What it does |
+| --- | --- |
+| OFF | No transfer. |
+| AUTO BALANCE | Moves fuel from the heavier wing to the lighter wing until the two sides are within 150 L of each other, then waits. Starts again by itself if the imbalance comes back. |
+| LEFT > RIGHT | Moves fuel from the fullest left tank to the emptiest right tank. |
+| RIGHT > LEFT | Moves fuel from the fullest right tank to the emptiest left tank. |
+| OUTER > INNER | Moves fuel from an outer tank to the inner tank on the same wing, starting with the fuller side. |
+| ENGINE OUT | For flying with a failed engine. Moves the fuel stranded in the dead engine's tank to a working tank on the same wing (or across, if that keeps the balance), then auto-balances. With no failed engine it works like AUTO BALANCE. |
+
+Fuel moves at **60 L per second**. LEFT > RIGHT, RIGHT > LEFT and OUTER > INNER switch themselves back to OFF when the source tank is empty or the destination tank is full.
+
+### Why balance matters
+
+Fuel imbalance between the wings is a real weight on one side, and it rolls the aircraft toward the heavy wing. You will feel it in the controls and need to trim against it.
+
+- At **400 L** difference the FUEL BALANCE checklist row turns red, the Fuel page balance bar turns red, and when airborne the master caution comes on.
+- In normal flight with the crossfeed open, the tanks drain evenly. An imbalance means something has happened: a failed engine with the crossfeed shut, a fire burning fuel, a fuel dump, or a transfer left running.
+
+### Transferring fuel
+
+<Steps>
+
+1. Open the **Fuel** page on the centre-right screen and check the balance line (LEFT HEAVY / RIGHT HEAVY and litres).
+2. Look at the fuel panel and use **Fuel transfer** until the label shows **AUTO BALANCE**.
+3. Watch the label change to **(flowing)** and the balance figure drop.
+4. When it reads **(idle)** the wings are within 150 L. You can leave AUTO BALANCE selected so it corrects any new imbalance, or cycle back to OFF.
+
+</Steps>
+
+To move fuel in one direction yourself, cycle to **LEFT > RIGHT**, **RIGHT > LEFT** or **OUTER > INNER** instead, and cycle back to OFF when you are done.
+
+## Fuel dump
+
+The **Fuel dump** action sits with the APU switch. It throws fuel overboard through vents at the wing trailing edges to lighten the aircraft for an emergency landing. You will see vapour trails behind both wings.
+
+| Value | Figure |
+| --- | --- |
+| Dump rate | 100 L per second |
+| Stops automatically at | 2,000 L remaining |
+| Full tanks down to reserve | about 4 minutes |
+| Spawn load down to reserve | about 80 seconds |
+
+The action reads **Fuel dump: OFF (start)** and **Fuel dump: ON (stop)**. It takes a 2-second hold and can only be used by the pilot or co-pilot. You cannot start a dump with 2,000 L or less on board.
+
+While dumping, the Engine page shows FUEL DUMP ON, the Fuel page hint reads FUEL DUMP ACTIVE and the checklist adds a red FUEL DUMP row.
+
+<Aside type="caution">
+The dump empties the tanks one after another, starting with LH OUTER, then LH INNER, then the right tanks. A long dump leaves the aircraft heavy on the right. Select **AUTO BALANCE** on the fuel panel while you dump, or straight after. The transfer (60 L/s) is slower than the dump (100 L/s), so expect some imbalance until it catches up.
+</Aside>
+
+## The Fuel page
+
+The Fuel page on the centre-right screen shows the four tank bars, balance, total fuel, endurance, transfer mode, crossfeed state and each engine's feed. The full layout is described on [Cockpit displays](/reforger-c130-docs/systems/mfd/#fuel-page). The Engine page also shows fuel quantity in kilograms, fuel percentage and endurance in minutes.
+
+## Refuelling
+
+The C-130J uses the game's standard vehicle fuel system for its four tanks, and the aircraft has a refuel point on the fuselage. Refuel it the same way you would refuel any large vehicle in Reforger, for example from a fuel truck or fuel source.
+
+Next: [Engines and oil](/reforger-c130-docs/systems/engines/).

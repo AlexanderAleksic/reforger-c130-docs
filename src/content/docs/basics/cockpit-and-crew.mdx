@@ -1,0 +1,85 @@
+---
+title: Cockpit, seats and crew
+description: Every seat in the C-130J, how to get in and out, how cockpit interaction works and what each crew position does.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page covers every seat in the aircraft, getting in and out, and how you operate the cockpit by looking at controls.
+
+## Seats at a glance
+
+| Position | How many | Get-in action | What it is for |
+|---|---|---|---|
+| Pilot | 1 | **Get In (Pilot)** | Flies the aircraft and runs all cockpit systems. |
+| Co-Pilot | 1 | **Get In (Co-Pilot)** | Full cockpit access, can take the controls, has its own autopilot panel. |
+| Cockpit passenger | 2 | **Get In (Passenger)** | Seats on the flight deck behind the pilots. |
+| Cargo bay passenger | 24 | Vanilla get-in prompt on each seat | Troop seats along the sides of the cargo bay. |
+| Jump position | 24 | **Enter jump position** | Standing positions for paratroopers (13 right, 11 left). See [Paratroopers](/reforger-c130-docs/cargo/paratroopers/). |
+| Jumpmaster | 1 | **Enter jumpmaster position** | Rear station with the jump lights and ramp controls. |
+| Bombardier | 1 | Get-in prompt at the bombardier station | Seat in the cargo bay used for special payloads. See [GBU-43/B MOAB](/reforger-c130-docs/advanced/moab/). |
+
+You can also move between seats with the vanilla seat-switch actions, including **Switch to jump position** and **Switch to jumpmaster position** from inside the cargo bay.
+
+## Getting in
+
+The crew boards through the front crew door on the left side of the nose. The door has **Open Door** and **Close Door** actions. After it moves, the door is locked for about 5 seconds before you can operate it again.
+
+The pilot, co-pilot and cockpit passenger get-in actions are on the crew entrance. Cargo bay seats, jump positions and the jumpmaster position each have their own prompt inside the bay.
+
+## Getting out
+
+All C-130 seats use a modified get-out action:
+
+- **You can get out at any speed, including in flight.** The vanilla 15 km/h limit does not apply. You are placed at the door exit point.
+- **You take no damage for 2 seconds after leaving.** This stops the exit from hurting you.
+- **No exit ragdoll.** For about 1.5 seconds after you leave a fast-moving aircraft, the game keeps you out of ragdoll, so you do not flop out of the door.
+
+<Aside type="caution">
+Getting out in flight works. Take a parachute before you do. The aircraft carries a **Parachutes** storage that you can open from inside or outside. See [Paratroopers](/reforger-c130-docs/cargo/paratroopers/).
+</Aside>
+
+The pilot and co-pilot seats have **no jump-out action**. Passenger seats and jump positions keep the vanilla jump-out action. Paratroopers normally leave through the jump system, not by getting out.
+
+## Who flies
+
+The pilot and co-pilot are both pilot seats. Use the vanilla **Take Controls** action to choose who has the yoke. **Lock Controls** stops the other seat from taking them. Only the crew member who currently has the controls can:
+
+- fly with the stick, throttle and rudder keys,
+- use the **Throttle** and **Trim** dials,
+- use the gear, flaps, thrust-reverse, lights, ramp and parking-brake hotkeys.
+
+Both pilot seats can use the switches and buttons in the cockpit, even without the controls.
+
+## How cockpit interaction works
+
+Almost every system is a clickable control in the cockpit, the same way vanilla helicopter cockpits work:
+
+1. Look at a switch, lever or panel. Its action appears in the interaction menu.
+2. If a control has several actions (for example the throttle quadrant has **Throttle** and **Thrust reverse**), scroll the mouse wheel to choose one.
+3. Press the interaction key (<kbd>F</kbd> on keyboard and mouse by default) to use it.
+
+Action names change with the system state. **Battery: ON** becomes **Battery: OFF**, **Lower flaps** becomes **Raise flaps**, and so on. When something is blocked, the name usually tells you why, for example **Raise landing gear (locked: weight on wheels)** or **Start engines (APU not running)**.
+
+### Dials (hold and scroll)
+
+Some controls set a value instead of switching something on or off: **Throttle**, **Trim**, the autopilot **AP Heading**, **AP Altitude** and **AP Speed** dials, and **Loiter radius**. To use one, hold the interaction key on it and scroll the mouse wheel. Each wheel step changes the value by a fixed amount. The amounts are listed in [Controls and keybinds](/reforger-c130-docs/basics/controls/#cockpit-interaction-actions).
+
+### Screen focus
+
+The engine display and the map display have a **Focus screen** action. It moves your view up close to that screen so you can read it, and your flight controls keep working. Press the interaction key again to return. See [Cameras and views](/reforger-c130-docs/flying/cameras/#screen-focus-view).
+
+Only the pilot and co-pilot can see and use the cockpit controls. Passengers in the cockpit cannot work the switches.
+
+## Crew roles
+
+The mod does not enforce roles. The seats are laid out for a normal C-130 crew:
+
+- **Pilot**: start-up, taxi, takeoff, flying and landing. Owns the pilot-side autopilot panel.
+- **Co-pilot**: backs up the pilot, can take the controls, has a separate autopilot panel, and can run the cargo and ramp panel from the cockpit.
+- **Jumpmaster / loadmaster**: works at the rear. The jumpmaster position has the jump lights (**Jump light: RED**, **Jump light: GREEN - GO**, **Jump light: OFF**) and the ramp controls (**Close ramp**, **Open ramp to horizontal (airdrop)**, **Open ramp fully**). Cargo tie-downs and unloading happen in the bay and at the ramp. See [Cargo ramp](/reforger-c130-docs/cargo/ramp/), [Loading vehicles](/reforger-c130-docs/cargo/vehicles/) and [Airdrop](/reforger-c130-docs/cargo/airdrop/).
+- **Passengers and paratroopers**: ride in the bay seats or stand in the jump positions for a drop.
+
+The pilots have a matching cockpit panel with the same ramp, jump-light and unload actions, so a two-person crew can run a drop from the flight deck.
+
+Next: [Controls and keybinds](/reforger-c130-docs/basics/controls/).

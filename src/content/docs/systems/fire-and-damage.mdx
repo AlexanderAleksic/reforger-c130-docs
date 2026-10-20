@@ -1,0 +1,106 @@
+---
+title: Fire and damage
+description: How the C-130J takes hits, how engine fires start and spread to the wing tanks, how to fight a fire with the fire handle and fire bottles, landing damage, and what happens when the aircraft is destroyed.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page explains what happens when the C-130J is hit: how hits move the aircraft, how engine fires start and spread, the engine fire procedure, landing damage, and the wreck.
+
+## Hits and impact physics
+
+Heavy hits push the aircraft physically, at the point where they land. How the aircraft reacts depends on where it was hit:
+
+| Hit on | Effect |
+| --- | --- |
+| Wing | Hard roll, little yaw. |
+| Tail | Yaw and pitch, little roll. |
+| Nose | Pitch the other way, and the aircraft slows. |
+| Fuselage | Mostly a shove, little rotation. |
+
+- Only hits doing at least **40** damage move the aircraft, so rifle fire will not rock it.
+- The push grows with the damage but is capped, so even a large warhead will not throw the aircraft into an unrecoverable spin.
+- Hits less than a quarter of a second apart count as one push.
+- Everyone aboard feels a camera shake that matches the strength of the hit.
+- Fire and collision damage do not push the aircraft.
+
+## Engine hits and engine fires
+
+An engine fails and catches fire when:
+
+- A hit of at least **80** damage lands within **5 m** of it (fire and collision damage don't count), or
+- The airframe itself catches fire. One random engine then fails and starts burning.
+
+A burning engine has flames at its nacelle. The Engine page shows ENG FIRE and the MASTER CAUTION flashes, and the checklist adds red ENGINE FIRE and FIRE BOTTLES rows at the top (see [Cockpit displays](/reforger-c130-docs/systems/mfd/#fire-items-any-phase)). What an engine failure does to the aircraft is covered in [Engines and oil](/reforger-c130-docs/systems/engines/#engine-failure).
+
+### Fire spread to the wing tanks
+
+A fire that keeps burning for **20 seconds** spreads to the wing tanks. Fires then break out at both inner wing roots, and:
+
+- The fire burns **40 L of fuel per second** from the tanks.
+- The hull loses an extra **1.2 % health per second**, on top of the normal fire damage. This extra damage stops at 15 % hull health, but the normal fire damage does not stop.
+- The fire handle no longer works. Only a fire bottle will put it out. The fire handle action and the checklist both tell you: **TANK FIRE, USE BOTTLE** / **TANK FIRE . . . BOTTLE ONLY**.
+
+Once every fire is out, the tank fires go out too.
+
+<Aside type="danger">
+You have 20 seconds from the first flames to stop the spread cheaply. After that, every second costs fuel and hull, and only a bottle helps.
+</Aside>
+
+## Firefighting equipment
+
+The pilot or co-pilot uses both items from the engine start panel.
+
+| Item | Action | Effect |
+| --- | --- | --- |
+| Fire handle | **Fire handle: ENG n (cut fuel)** (2-second hold) | Cuts fuel to the burning engine. That engine's fire goes out **3 seconds** later. It does not work once the fire has reached the tanks, and it does not put out a fire on the airframe itself. The action only appears while an engine is burning. |
+| Fire bottle | **Discharge fire bottle** (1.5-second hold) | Puts out every fire on the aircraft at once: all engines, the airframe and the tank fires. |
+
+The aircraft carries **2 fire bottles**. The action label shows how many are left, for example **Discharge fire bottle - ENG 2 + airframe (2/2 left)**. With no fire it reads **Fire bottles: 2/2 (no fire)** and cannot be used. When both are gone it reads **Fire bottles: EMPTY**.
+
+Putting out a fire does not repair the engine. A failed engine stays dead until the aircraft gets a full repair. A full repair also refills both fire bottles.
+
+## Engine fire procedure
+
+<Steps>
+
+1. **Identify.** ENG FIRE on the Engine page, flames at a nacelle, red ENGINE FIRE . . . ENG n on the checklist.
+2. **Fire handle.** Within the first 20 seconds, select **Fire handle: ENG n (cut fuel)**. Watch the flames go out about 3 seconds later.
+3. **Fire bottle if needed.** Discharge a fire bottle straight away if any of these is true:
+   - The fire handle label says **TANK FIRE, USE BOTTLE**, or the checklist shows TANK FIRE . . . BOTTLE ONLY.
+   - The fire is still burning a few seconds after the fire handle.
+   - The airframe itself is burning.
+   - More than one engine is burning. The fire handle deals with one engine at a time. You can use it again for the next engine once the first fire is out, but a bottle gets them all at once.
+4. **Check.** ENG FIRE clears on the Engine page and the fire rows leave the checklist. If the fire comes back and you have a bottle left, discharge it.
+5. **Fly the aircraft.** Trim against the dead engine and set the fuel panel to **ENGINE OUT**. See [Engines and oil](/reforger-c130-docs/systems/engines/#flying-with-an-engine-out).
+6. **Land.** With no bottles left the checklist hint reads NO AGENT LEFT - LAND OR SET DOWN NOW. Get the aircraft on the ground.
+
+</Steps>
+
+<Aside type="tip">
+If the fire has already spread, don't waste time on the fire handle. Go straight to the bottle.
+</Aside>
+
+## Landing damage
+
+Hard landings damage the landing gear:
+
+| Sink rate at touchdown | Result |
+| --- | --- |
+| Above 4 m/s (about 790 ft/min) | One or more tyres blow. The aircraft sags, braking fades and it pulls toward the blown side. |
+| Above 7 m/s (about 1,380 ft/min) | The gear collapses and the aircraft drops onto its belly. The hull also loses 25 % health. |
+
+Either result shows GEAR FAULT on the Engine page and the checklist. A full repair fixes it. See [Approach and landing](/reforger-c130-docs/basics/landing/).
+
+## Destruction and the wreck
+
+The aircraft is destroyed when its hull health reaches zero. The fire spread on its own will not take it there, but the normal fire damage, weapon hits and crashes will.
+
+When it is destroyed:
+
+- A large fuel explosion goes off and the hull is replaced by a burnt wreck.
+- Both wings tear off and tumble away as separate debris. The wing debris is removed after 60 seconds.
+- The cockpit and screens are hidden, so nothing floats inside the wreck.
+- All engines, the APU and the battery switch off, and the propellers stop.
+
+Next: [Lights and doors](/reforger-c130-docs/systems/lights-and-doors/).

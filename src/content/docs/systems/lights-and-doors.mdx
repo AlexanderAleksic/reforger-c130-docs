@@ -1,0 +1,67 @@
+---
+title: Lights and doors
+description: C-130J exterior lights (navigation, anti-collision, landing, taxi), dimmable cockpit and cargo bay lighting, and the crew door.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page covers the C-130J's exterior lights, the dimmable interior lighting, and the crew door. The cargo ramp has its own page, [Cargo ramp](/reforger-c130-docs/cargo/ramp/), and the jump light is covered in [Paratroopers](/reforger-c130-docs/cargo/paratroopers/).
+
+## Exterior lights
+
+| Light | Where | Action |
+| --- | --- | --- |
+| Navigation | Red on the left wingtip, green on the right wingtip | **Navigation Lights** |
+| Anti-collision | Red beacon on top of the tail | **Anti-Collision Lights** |
+| Landing | Two lights under the forward fuselage, angled slightly outward | **Landing Lights** |
+| Taxi | On the nose gear leg | **Taxi Lights** |
+
+All four are off at spawn. Their switches are on the cockpit lighting panel, together with the interior light switches. Look at the panel from the pilot or co-pilot seat and use the action to toggle a light.
+
+The lights do not need the battery or any other power.
+
+### Landing and taxi light keys
+
+The landing and taxi lights also have keybinds for the pilot who has the controls:
+
+| Light | Keyboard | Gamepad |
+| --- | --- | --- |
+| Taxi lights | Tap <kbd>L</kbd> | Tap D-pad up |
+| Landing lights | Hold <kbd>L</kbd> | Hold D-pad up |
+
+These are the default bindings. Check your own bindings in the game's controls menu. See [Controls and keybinds](/reforger-c130-docs/basics/controls/).
+
+<Aside type="tip">
+The LIGHTS row on the checklist follows the keybinds. If you switch the landing or taxi lights with the cockpit switches instead, the checklist may still show OFF. Use the keys if you want the checklist row to tick.
+</Aside>
+
+## Interior lights
+
+The interior lighting has three dimmable channels. Each one steps through **Off → Low → Med → High → Off** every time you use it:
+
+| Action | Light | At spawn |
+| --- | --- | --- |
+| **Cockpit flood** | Green cockpit flood light | High |
+| **Cockpit bright** | White cockpit light | Off |
+| **Cargo bay lights** | Green lights along the cargo bay | Off |
+| **Interior lights: all off** | Turns all three channels off. Only shown while at least one is on. | |
+
+The action label shows the current level, for example **Cockpit flood: High**. The switches are on the same lighting panel as the exterior lights and can only be used by the pilot or co-pilot from their seat. Light levels are shared, so everyone aboard sees the same lighting.
+
+<Aside type="tip">
+For night flying, turn the cockpit flood down to Low so the screens and the view outside stay readable. Turn the cargo bay lights on for loading or for paratroopers getting ready in the back.
+</Aside>
+
+## Crew door
+
+The C-130J has one crew door, at the front of the fuselage.
+
+- Use **Open Door** / **Close Door** at the door. Anyone can use it, crew or not.
+- After each use the door is locked for **5 seconds** while it moves.
+- While it is open the Engine page shows CREW DOOR OPEN, and the checklist wants it closed before engine start and before takeoff.
+
+An open door has no effect on how the aircraft flies, but the checklist will not show CLEARED FOR TAKEOFF until both the door and the ramp are closed.
+
+There are no separate paratroop doors to operate. Paratroopers jump from the ramp; see [Paratroopers](/reforger-c130-docs/cargo/paratroopers/) and [Cargo ramp](/reforger-c130-docs/cargo/ramp/).
+
+Next: [Cargo ramp](/reforger-c130-docs/cargo/ramp/).

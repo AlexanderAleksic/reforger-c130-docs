@@ -1,0 +1,270 @@
+---
+title: Cockpit displays (MFDs)
+description: The C-130J's four cockpit screens, every page they can show, how to switch pages, zoom in on a screen, and read the built-in checklist.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers the four multi-function displays (MFDs) across the instrument panel: what each screen shows, how to change pages, how to zoom in on a screen so you can read it, and the full in-cockpit checklist.
+
+## The four screens
+
+The screens sit in a row across the main panel. The two outer screens are flight displays. The two centre screens each hold several pages that you can switch between.
+
+| Screen | Pages | Opens on |
+| --- | --- | --- |
+| Outer left | Flight display | Flight display |
+| Centre left | **Engine**, **Weight**, **Checklist**, **Manifest** | Engine |
+| Centre right | **Map** (with the release computer), **Radar**, **Fuel**, **Systems** | Map |
+| Outer right | Flight display | Flight display |
+
+All pages refresh several times a second. They read live data from the aircraft, so a number that moves means something in the aircraft has actually changed.
+
+Colours are the same on every page:
+
+- **Green**: normal, or item done.
+- **Amber**: needs attention, or in progress.
+- **Red**: warning, act now.
+- **Dim green**: off or not in use.
+
+## Using the screens
+
+Only the pilot and co-pilot can use the screens. Each screen has an interaction point on its bezel. Look at it while seated to get the screen's actions in the action menu.
+
+| Action | Where | What it does |
+| --- | --- | --- |
+| Page switch | Centre screens | Steps to the next page on that screen. |
+| Power | All screens | Turns that screen on or off. |
+| **Focus screen** | Centre screens | Zooms your view onto the screen (see below). |
+| Map zoom | Centre right, Map page only | Changes the map zoom level. |
+| **Release scale** | Centre right, Map page only | Sets the scale of the release-computer marker. |
+| **Release cargo** | Centre right | Drops the next load. See [Airdrop](/reforger-c130-docs/cargo/airdrop/). |
+| **Radar range: N KM** | Centre right, Radar page only | Changes the radar range. See [Radar](/reforger-c130-docs/advanced/radar/). |
+
+The zoom, scale and range actions only appear while their page is on screen, so the action list stays short on the other pages.
+
+### Focus screen
+
+From the seat, the centre screens are small and seen at an angle. **Focus screen** moves your camera square in front of the screen with a narrow field of view, so even the small text on the checklist or fuel page is easy to read.
+
+<Steps>
+
+1. Seated as pilot or co-pilot, look at the centre screen you want to read.
+2. Select **Focus screen** from the action menu.
+3. Read the page. You keep full control of the aircraft while the view is up.
+4. Press the interact key again (<kbd>F</kbd> on keyboard and mouse, <kbd>X</kbd> on gamepad) to return to the normal cockpit view.
+
+</Steps>
+
+The focus view also closes on its own if you open a menu, open the Game Master editor, leave your seat or die.
+
+<Aside type="tip">
+Focus the screen before you start working through the checklist or fuel panel. It turns a squint into a quick glance.
+</Aside>
+
+## Flight displays (outer screens)
+
+The outer left and outer right screens are primary flight displays. They show:
+
+- Airspeed in knots, with a moving tape.
+- Barometric altitude in feet, with a moving tape.
+- Heading, with a rotating compass.
+- Ground speed in knots.
+- Radar altitude (height above the ground) in feet.
+- G load.
+- A pitch and roll attitude display.
+- Autopilot status: which seat has the autopilot engaged and whether altitude hold is active. See [Autopilot](/reforger-c130-docs/flying/autopilot/).
+
+The cockpit also has a separate small attitude display.
+
+## Engine page
+
+The default page on the centre-left screen. For each of the four engines it shows:
+
+- Power (HP), turbine temperature (MGT) and gas generator speed (NG), each as a needle gauge and a number.
+- Propeller speed (NP) and fuel flow.
+- Total fuel in kilograms, fuel percentage, and the endurance in minutes at the current throttle.
+
+These gauges follow each engine's real speed. At idle an engine reads about 200 HP, 400 MGT and 62 % NG. At full power it reads about 4,600 HP, 870 MGT and 100 % NG. A stopped or failed engine reads zero. The power and fuel-flow figures are a guide only: actual fuel burn is described on the [Fuel](/reforger-c130-docs/systems/fuel/) page.
+
+### Caution messages
+
+The bottom of the Engine page lists caution messages. Each one shows only while its condition is true:
+
+| Message | Shown when |
+| --- | --- |
+| RAMP OPEN | The cargo ramp is not closed. |
+| CREW DOOR OPEN | The crew door is open. |
+| GEAR DOWN | Airborne with the landing gear down. |
+| FLIGHT ASSIST OFF | Flight assist is turned off. |
+| APU RUNNING | The APU is running. |
+| ENGINES OFF | No engine is running or starting. |
+| ENG FIRE | An engine or the airframe is on fire, or the fire has spread to the wing tanks. |
+| CARGO UNSECURED | Cargo in the bay is not tied down. |
+| GEAR FAULT | A tyre has blown or the gear has collapsed. |
+| FUEL LOW | Total fuel is at or below 15 %. |
+| FUEL DUMP ON | Fuel is being dumped. |
+| ENG FAILURE | One or more engines have failed. |
+| MASTER CAUTION | Flashes for a fire, gear fault, low fuel or engine failure, and, when airborne, for unsecured cargo or a fuel imbalance. |
+
+## Weight page
+
+Shows the aircraft's weight and balance:
+
+- Total weight, fuel weight and cargo weight in kilograms.
+- How far the cargo has moved the centre of gravity, in centimetres, with a needle.
+- Up to eight cargo items with their weight, each flagged UNSECURED if it is not tied down.
+
+See [Loading vehicles](/reforger-c130-docs/cargo/vehicles/) and [Cargo crates](/reforger-c130-docs/cargo/crates/) for how loads affect the aircraft.
+
+## Manifest page
+
+A list of every cargo slot in the bay with its load name, weight, position and tie-down state (TIED, LOOSE or MOVING), plus gross weight, cargo weight, centre of gravity and slots used. A hint line at the bottom warns about unsecured loads or a centre of gravity out of limits. Full details are on [Loading vehicles](/reforger-c130-docs/cargo/vehicles/) and [Cargo crates](/reforger-c130-docs/cargo/crates/).
+
+## Map page and release computer
+
+The default page on the centre-right screen is a moving map with your aircraft symbol. Over the map, the release computer draws a crosshair where the next load released from the bay would land, with a status line, the distance to impact, a grid reference and a countdown. The **Release scale** action sets how the marker is scaled. Leave it on **AUTO** so the marker follows the map zoom by itself. Using the release computer for drops is covered in [Airdrop](/reforger-c130-docs/cargo/airdrop/).
+
+## Radar page
+
+A rotating-sweep display of aircraft around you, with range rings, contact altitudes and your heading. Use **Radar range** to change the range. See [Radar](/reforger-c130-docs/advanced/radar/).
+
+## Fuel page
+
+A full picture of the fuel system:
+
+- Four tank bars (LH OUTER, LH INNER, RH INNER, RH OUTER) with litres and percentage. A tank turns amber below 15 % and red below 5 %.
+- Lateral balance: BALANCED, or LEFT HEAVY / RIGHT HEAVY with the difference in litres and a bar. The bar turns red at a 400 L imbalance.
+- Total fuel in litres and endurance at the current throttle (amber below 45 minutes, red below 15 minutes).
+- The current fuel transfer mode and the crossfeed valve position.
+- One line per engine showing where it draws fuel from, or OFF / FAILED. With the crossfeed shut, an engine's line warns LOW below 10 % and DRY when its tank is empty.
+- A hint line for the most urgent fuel problem, such as FUEL DUMP ACTIVE or a dry tank with the crossfeed shut.
+
+How to use the fuel panel is explained on the [Fuel](/reforger-c130-docs/systems/fuel/) page.
+
+## Systems page
+
+Laid out like the real C-130J system status display:
+
+- **Electrical**: voltage on each of the three phases and percentage load for the four engine generators and the APU generator. An offline generator reads OFF. Below that are the transformer-rectifier loads and the two DC bus voltages.
+- **Hydraulics**: utility, booster and auxiliary system pressures, rudder boost pressures, and normal and emergency brake pressures.
+- **Oil**: oil cooler flap position for each engine.
+- **Fuel**: quantity in each tank and the total.
+- **Oxygen**: the crew liquid oxygen quantity.
+
+If the battery is off, the hint line reads BATTERY OFF - NO BUS POWER. What these numbers mean is explained on [Electrical and APU](/reforger-c130-docs/systems/electrical/), [Hydraulics](/reforger-c130-docs/systems/hydraulics/) and [Engines and oil](/reforger-c130-docs/systems/engines/).
+
+## Checklist page
+
+The Checklist page on the centre-left screen is a live checklist. It picks the right phase of flight by itself and ticks items off as you complete them, so you never need to page through it.
+
+### Reading the checklist
+
+The phase name is shown at the top and a hint line at the bottom tells you the most important next step. Each item has a mark:
+
+| Mark | Colour | Meaning |
+| --- | --- | --- |
+| `[X]` | Green | Done. |
+| `[ ]` | Amber | Still to do, or in progress. |
+| `[!]` | Red | Warning: something is wrong. |
+| `-` | Grey | Information only. |
+
+### How the phase is chosen
+
+| Phase shown | When |
+| --- | --- |
+| BEFORE START | On the ground and not all four engines running. |
+| BEFORE TAKEOFF | On the ground with all four engines running. |
+| APPROACH / LANDING | Airborne with the gear down, or below 900 m (about 2,950 ft) above the ground. |
+| CLIMB / CRUISE | Airborne, gear up and above 900 m above the ground. |
+
+The aircraft counts as on the ground when its wheels are loaded or it is less than 15 m above the ground. Right after takeoff the checklist shows APPROACH / LANDING until you raise the gear and climb above 900 m.
+
+### Fire items (any phase)
+
+If any engine is burning, these rows appear at the top of the list in every phase:
+
+| Item | Shows |
+| --- | --- |
+| ENGINE FIRE | Which engine is burning (red). |
+| FIRE BOTTLES | Bottles left, for example 2/2, or EMPTY (red). |
+| TANK FIRE . . . BOTTLE ONLY | The fire has reached the wing tanks, so only a fire bottle will put it out (red). |
+
+The hint line then reads ENGINE FIRE - PULL FIRE HANDLE OR DISCHARGE BOTTLE, TANK FIRE - FUEL CUT WONT WORK, DISCHARGE BOTTLE, or NO AGENT LEFT - LAND OR SET DOWN NOW. See [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/).
+
+### BEFORE START
+
+| Item | Done when |
+| --- | --- |
+| BATTERY . . . ON | The battery is on. |
+| APU . . . RUNNING | The APU has finished starting. |
+| CARGO . . . SECURED | No loose cargo. Red if anything is unsecured. |
+| RAMP . . . CLOSED | The ramp is closed. |
+| CREW DOOR . . . CLOSED | The crew door is closed. |
+| FUEL . . . nn% | At least 25 % fuel. Amber at 15–25 %, red below 15 %. |
+| ENGINE START . . . n/4 RUNNING | All four engines running. Reads IN PROGRESS during the start sequence. Red if some engines are running but the start is not complete. |
+
+Hints, in order of priority: BATTERY FIRST - APU AND ENGINE START NEED BUS POWER, START APU BEFORE ENGINE SEQUENCE, ENGINE SEQUENCE RUNNING - STAND BY, READY FOR ENGINE START. See [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).
+
+### BEFORE TAKEOFF
+
+| Item | Done when |
+| --- | --- |
+| ENGINES . . . n/4 RUNNING | All four engines running. |
+| CARGO . . . SECURED | No loose cargo. |
+| RAMP . . . CLOSED | The ramp is closed. |
+| CREW DOOR . . . CLOSED | The crew door is closed. |
+| FLAPS . . . SET | Flaps at any setting other than up. |
+| TRIM . . . NEUTRAL | Trim close to neutral. |
+| GEAR . . . DOWN | Gear down. |
+| THRUST REVERSE . . . STOWED | Reverse thrust off. |
+| FLIGHT ASSIST . . . ON/OFF | Information only. |
+| GPWS . . . ON/OFF | The ground proximity warning system is on. |
+| LIGHTS . . . | Landing and/or taxi lights on. Shows LANDING, TAXI, LANDING + TAXI or OFF. |
+| FUEL . . . nn% | At least 25 % fuel. |
+
+Extra red rows appear if they apply: FUEL DUMP . . . ACTIVE, GEAR . . . FAULT, ENGINE . . . FAILURE.
+
+Hints, in order of priority: CLOSE RAMP AND DOOR BEFORE TAKEOFF, UNSECURED CARGO WILL SLIDE ON ROTATION, FLAPS SET FOR TAKEOFF, CLEARED FOR TAKEOFF. See [Taxi and takeoff](/reforger-c130-docs/basics/taxi-and-takeoff/) and [Trim and flaps](/reforger-c130-docs/flying/trim-and-flaps/).
+
+### CLIMB / CRUISE
+
+| Item | Done when |
+| --- | --- |
+| GEAR . . . UP | Gear up. |
+| FLAPS . . . UP | Flaps up. |
+| RAMP . . . CLOSED | The ramp is closed. |
+| CARGO . . . SECURED | No loose cargo. |
+| AUTOPILOT . . . ON/OFF | Information only. |
+| GPWS . . . ON/OFF | GPWS on. |
+| FUEL . . . nn% | At least 15 % fuel. |
+| FUEL BALANCE . . . | BALANCED (under 25 L difference), L HEAVY / R HEAVY with litres, or the active transfer mode. Red at 400 L or more. Amber while a transfer mode is selected. |
+| CROSSFEED . . . | OPEN (done), SHUT (amber), or SHUT - TANK LOW (red) when any tank is below 10 %. |
+| ALTITUDE . . . nnnn FT | Information only. |
+
+Extra red rows: FUEL DUMP . . . ACTIVE, ENGINE . . . FAILURE.
+
+Hints, in order of priority: ENGINE OUT - TRIM AGAINST THE ASYMMETRY, FUEL IMBALANCE - SET FUEL PANEL TO AUTO BALANCE, GEAR STILL DOWN - DRAG AND FUEL BURN, FUEL LOW - PLAN THE DIVERSION.
+
+### APPROACH / LANDING
+
+| Item | Done when |
+| --- | --- |
+| GEAR . . . DOWN | Gear down. |
+| FLAPS . . . SET | Flaps at any setting other than up. |
+| GPWS . . . ON/OFF | GPWS on. |
+| LIGHTS . . . | Landing and/or taxi lights on. |
+| CARGO . . . SECURED | No loose cargo. |
+| AUTOPILOT . . . ON/OFF | Autopilot off. Red while it is engaged. |
+| RADAR ALT . . . nnnn FT AGL | Information only. |
+| THRUST REVERSE . . . ARMED AFTER TOUCHDOWN | Reminder only. |
+
+Extra red rows: GEAR . . . FAULT, ENGINE . . . FAILURE.
+
+Hints, in order of priority: GEAR NOT DOWN, DISENGAGE AUTOPILOT BEFORE TOUCHDOWN, FLAPS FOR LANDING, STABLE - FLY IT DOWN. See [Approach and landing](/reforger-c130-docs/basics/landing/).
+
+<Aside type="note">
+The LIGHTS row follows the landing and taxi light keybinds. See [Lights and doors](/reforger-c130-docs/systems/lights-and-doors/).
+</Aside>
+
+Next: [Electrical and APU](/reforger-c130-docs/systems/electrical/).

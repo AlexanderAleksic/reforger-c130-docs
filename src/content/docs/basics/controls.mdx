@@ -1,0 +1,133 @@
+---
+title: Controls and keybinds
+description: Default keyboard, gamepad and joystick bindings for the C-130J, the cockpit actions you click on, and where to rebind everything.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page lists every default binding the C-130J uses and every action you can click in the cockpit.
+
+The C-130 uses the shared flight controls from **Propeller Flight Core**, a required mod. Your bindings are therefore the same as in other aircraft built on it. Hotkeys only work for the crew member who currently has the controls (see [Who flies](/reforger-c130-docs/basics/cockpit-and-crew/#who-flies)).
+
+## Flight controls
+
+| Control | Keyboard | Gamepad | Joystick |
+|---|---|---|---|
+| Pitch (nose down / nose up) | <kbd>W</kbd> / <kbd>S</kbd>, also <kbd>Up</kbd> / <kbd>Down</kbd> | Right stick up / down | Axis 1 |
+| Roll left / right | <kbd>A</kbd> / <kbd>D</kbd>, also <kbd>Left</kbd> / <kbd>Right</kbd> | Right stick left / right | Axis 0 |
+| Rudder left / right (nose wheel steering on the ground) | <kbd>Q</kbd> / <kbd>E</kbd> | Left stick left / right | Axis 5 (twist) |
+| Throttle up (hold) | <kbd>Shift</kbd> | Left stick up | - |
+| Throttle down (hold) | <kbd>Ctrl</kbd> | Left stick down | - |
+| Throttle lever | - | - | Axis 2 (first or second device) |
+
+Joystick axis numbers are generic defaults. Your stick may number its axes differently.
+
+### How the inputs feel
+
+- **The controls ease in.** Inputs move toward the key or stick position at a limited rate. Roll reaches full deflection in 0.5 s, pitch and rudder in about 0.7 s. The controls ease back to centre when you let go.
+- **Throttle** moves 50% per second while you hold the key, so idle to full takes 2 seconds. It stays where you leave it. With no engine running it is held at 0%.
+- **Throttle lever**: moving a joystick throttle more than 5% hands throttle control to the lever. Pressing a throttle key hands it back to the keys.
+- **Nose wheel steering** uses the rudder keys, not <kbd>A</kbd>/<kbd>D</kbd>. You get full steering up to about 29 km/h. It then fades to 12% at about 160 km/h, so a hard turn at takeoff speed does not flip the aircraft.
+
+### Mouse flight
+
+If **Mouse aircraft control** is turned on in the vanilla gameplay settings and you play on mouse and keyboard, the mouse flies the aircraft like a joystick that stays where you leave it:
+
+- Move the mouse to set pitch and roll. <kbd>W</kbd>/<kbd>S</kbd>/<kbd>A</kbd>/<kbd>D</kbd> nudge the same stick.
+- Hold **Freelook** (<kbd>Alt</kbd>) to look around without moving the stick. Tap it to switch the mouse to looking around until you tap it again.
+- Mouse flight pauses while a menu or the map is open, and while the autopilot is engaged.
+
+## Aircraft hotkeys
+
+| Function | Keyboard | Gamepad | Notes |
+|---|---|---|---|
+| Landing gear up / down | <kbd>N</kbd> | Left stick click | Cannot retract while the weight is on the wheels. |
+| Flaps up / down | <kbd>F</kbd> | D-pad right | Two positions. 2 seconds before you can move them again. |
+| Thrust reverse on / off | <kbd>U</kbd> | D-pad down | See [Approach and landing](/reforger-c130-docs/basics/landing/). |
+| Trim nose up / nose down (hold) | <kbd>Page Up</kbd> / <kbd>Page Down</kbd> | - | See [Trim and flaps](/reforger-c130-docs/flying/trim-and-flaps/). |
+| Reset trim | <kbd>Home</kbd> | Right stick click | Sets trim to neutral. |
+| Wheel brakes (hold) | <kbd>Space</kbd> | A | Only work with the wheels on the ground. |
+| Parking brake (toggle) | <kbd>Space</kbd> (vanilla vehicle handbrake) | Vanilla handbrake binding | Only sets below about 11 km/h. |
+| Taxi lights / landing lights | Tap <kbd>L</kbd> / hold <kbd>L</kbd> | Tap / hold D-pad up | The two are independent. See [Lights and doors](/reforger-c130-docs/systems/lights-and-doors/). |
+| Cargo ramp (closed / fully open) | <kbd>J</kbd> | B | Joystick button 3. See [Cargo ramp](/reforger-c130-docs/cargo/ramp/). |
+| Freelook | <kbd>Alt</kbd> | Right bumper (vanilla) | See [Cameras and views](/reforger-c130-docs/flying/cameras/). |
+| Interact / leave camera views | <kbd>F</kbd> | X (vanilla) | Uses cockpit controls. Also closes the cargo-bay and screen-focus views. |
+
+<Aside type="note">
+**<kbd>Space</kbd> does two jobs.** Holding it applies the wheel brakes. Each press also toggles the parking brake, but the parking brake only *sets* below about 11 km/h. If it is already set, a press releases it. While the parking brake is set, the brakes are fully on whatever you press.
+</Aside>
+
+<Aside type="caution">
+Flaps (<kbd>F</kbd>) share a key with the vanilla interaction key. If pressing <kbd>F</kbd> on a cockpit control also moves your flaps, rebind **Flaps** to a free key (see [Rebinding](#rebinding)).
+</Aside>
+
+### Keys that do nothing
+
+The input files also define <kbd>R</kbd>, <kbd>F3</kbd> and <kbd>F4</kbd> for instant engine start, a test jump and instant unload. These are developer test keys and are switched off in the released aircraft. They do nothing in normal play. Unlike some other Propeller Flight Core aircraft, the C-130 does not use <kbd>R</kbd> to start engines. Use the cockpit start procedure in [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).
+
+## Cockpit interaction actions
+
+Look at a control, scroll to choose an action, and press the interaction key. For dials, hold the interaction key and scroll. These actions are only available to the pilot and co-pilot unless noted.
+
+### Main panel and pedestal
+
+| Control | Action(s) | Notes |
+|---|---|---|
+| Battery switch | **Battery: ON** / **Battery: OFF** | Cannot be turned off while an engine runs. |
+| APU switch | **APU: START** / **APU: STOP** | Takes 15 s to start. Cannot be stopped while an engine runs. |
+| APU panel | **Fuel dump: OFF (start)** / **Fuel dump: ON (stop)** | See [Fuel](/reforger-c130-docs/systems/fuel/). |
+| Engine start panel | **Start engines** / **Abort start (engines starting...)** / **Shut down engines** | Starts or stops all four. See [Power-up and engine start](/reforger-c130-docs/basics/engine-start/). |
+| Engine start panel | **Fire handle**, **Discharge fire bottle** | See [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/). |
+| Throttle quadrant | **Throttle N%** (dial) | 5% per wheel step. Only shown with all four engines running, and only to the crew member with the controls. |
+| Throttle quadrant | **Thrust reverse: ON** / **Thrust reverse: OFF** | |
+| Gear lever | **Raise landing gear** / **Lower landing gear** | |
+| Gear panel | **Parking brake: RELEASED - set** / **Parking brake: SET - release** | Refuses to set above walking pace ("Too fast - slow to a walk first"). |
+| Flap lever | **Lower flaps** / **Raise flaps** | |
+| Trim wheel | **Trim N°** (dial), **Reset trim** | 3° per wheel step. Only for the crew member with the controls. |
+| Fuel panel | **Fuel transfer**, **Crossfeed**, **Tanks** readout | See [Fuel](/reforger-c130-docs/systems/fuel/). |
+| Light panel | **Navigation Lights**, **Landing Lights**, **Taxi Lights**, **Anti-Collision Lights**, interior light levels, **Interior lights: all off** | See [Lights and doors](/reforger-c130-docs/systems/lights-and-doors/). |
+| Pilot and co-pilot stations | **Disable GPWS**, **Disable TCAS** | Turns the ground and traffic warning systems off (and back on). |
+
+### Autopilot panels (pilot side and co-pilot side)
+
+| Action | Step per wheel notch | Notes |
+|---|---|---|
+| **Engage autopilot** / **Disengage autopilot** | - | Shows **Autopilot in use (Pilot/Copilot)** if the other seat owns it. |
+| **AP Heading N°** | 1° | Only shown to the seat that engaged the autopilot. Hidden while loitering. |
+| **AP Altitude N ft** | 500 ft | Only shown to the seat that engaged the autopilot. |
+| **AP Speed N kts** | 5 kt | Only shown to the seat that engaged the autopilot. |
+| **Set loiter point (open map)** | - | See [Loiter and orbit](/reforger-c130-docs/flying/loiter/). |
+| **Loiter radius N m** | 250 m | Only while loitering. |
+| **Turn off loiter** | - | Only while loitering. |
+
+See [Autopilot](/reforger-c130-docs/flying/autopilot/) for how these behave.
+
+### Cargo and ramp panel (cockpit)
+
+| Action | See |
+|---|---|
+| **View Cargo Bay** | [Cameras and views](/reforger-c130-docs/flying/cameras/#cargo-bay-camera) |
+| **Close ramp**, **Open ramp to horizontal (airdrop)**, **Open ramp fully** | [Cargo ramp](/reforger-c130-docs/cargo/ramp/) |
+| **Secure cargo (tie down)** / **Release cargo tie-downs** | [Loading vehicles](/reforger-c130-docs/cargo/vehicles/) |
+| **Unload rear cargo**, **Unload all cargo** | [Loading vehicles](/reforger-c130-docs/cargo/vehicles/), [Airdrop](/reforger-c130-docs/cargo/airdrop/) |
+| **LAPES extraction (rear)** | [LAPES](/reforger-c130-docs/cargo/lapes/) |
+| **CDS drop prediction** | [Airdrop](/reforger-c130-docs/cargo/airdrop/) |
+| **Jump light: RED / GREEN - GO / OFF** | [Paratroopers](/reforger-c130-docs/cargo/paratroopers/) |
+
+### Displays
+
+The engine display and the map display have **Focus screen**. Anyone seated in the aircraft who can reach the screen can use it. The map display also has its own range and release controls. See [Cockpit displays (MFDs)](/reforger-c130-docs/systems/mfd/).
+
+## Rebinding
+
+Open **Settings > Keybinds**. The C-130's bindings are spread over three places:
+
+- **Airplane** (from Propeller Flight Core): pitch, roll, rudder, throttle, throttle axis, landing gear, flaps, reverse thrust, trim up/down/reset, wheel brake, taxi and landing lights. Rebinding here changes every Propeller Flight Core aircraft.
+- **C-130J Hercules**: the **Cargo Ramp** toggle.
+- **Vanilla vehicle and character categories**: the handbrake (parking brake), interaction key and freelook.
+
+<Aside type="note">
+The **Airbrake**, **FCS Override**, **Persistent Wheel Brake** and engine start/stop entries in the Airplane category are used by other aircraft. The C-130 ignores them.
+</Aside>
+
+Next: [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).

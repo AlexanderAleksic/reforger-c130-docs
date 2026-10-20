@@ -1,0 +1,44 @@
+---
+title: C-130J Super Hercules
+description: Player and crew manual for the C-130J Super Hercules mod for Arma Reforger.
+---
+
+import { Aside, LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+This manual covers everything you need to crew the C-130J Super Hercules in Arma Reforger, from your first engine start to airdropping vehicles and dropping a full stick of paratroopers.
+
+## What the mod is
+
+The C-130J is a four-engine turboprop transport. The mod models it as a working aircraft, not just a flying vehicle:
+
+- **A real start-up.** Battery, APU and a timed engine start sequence. The aircraft spawns cold, with the parking brake set.
+- **A strip-theory flight model** with weight, inertia, trim, flaps, flight assist, autopilot and an orbit (loiter) mode.
+- **Aircraft systems** shown on cockpit displays: electrical, hydraulics, four engines with oil and failures, per-wing fuel tanks with transfer and dumping, and engine fires fought with fire handles and bottles.
+- **Cargo operations.** Load vehicles and airdrop crates into a 12 m cargo bay, tie them down, and unload them on the ground. You can also release them in flight under parachutes or by LAPES extraction.
+- **Paratroopers.** 24 jump positions, a jumpmaster, and a red/green jump light that sends the stick out the ramp.
+- **Warning systems**: GPWS ground-proximity callouts, TCAS traffic advisories and a stall warning.
+- **The GBU-43/B MOAB**, delivered out of the cargo bay through the same release system.
+
+## How to read this manual
+
+The manual is written to be read in order. Each section builds on the previous one:
+
+1. **Start here.** Install the mod and fly a short first flight.
+2. **Basics.** Seats, controls, start-up, takeoff, landing and shutdown.
+3. **Flying.** How the aircraft handles, plus trim, flaps, autopilot, loiter and camera views.
+4. **Aircraft systems.** The cockpit displays and each system in depth, with emergency procedures.
+5. **Cargo operations.** Ramp, vehicles, crates, airdrop, LAPES and paratroopers.
+6. **Advanced.** MOAB, radar, Game Master, multiplayer and troubleshooting.
+
+If you only want to get airborne, read [Installation](/reforger-c130-docs/start/installation/) and then [Quick start](/reforger-c130-docs/start/quick-start/).
+
+<Aside>
+Most flight keys come from the required **Propeller Flight Core** mod and are listed under the **Airplane** keybind category. The C-130 adds its own **C-130J Hercules** category for the cargo ramp. See [Controls and keybinds](/reforger-c130-docs/basics/controls/).
+</Aside>
+
+<CardGrid>
+	<LinkCard title="Quick start" description="From cold and dark to a landing in about ten minutes." href="/reforger-c130-docs/start/quick-start/" />
+	<LinkCard title="Controls and keybinds" description="Every key and cockpit action in one place." href="/reforger-c130-docs/basics/controls/" />
+	<LinkCard title="Airdrop" description="Releasing crates and vehicles in flight." href="/reforger-c130-docs/cargo/airdrop/" />
+	<LinkCard title="Troubleshooting" description="Engines won't start, ramp won't open, and other common problems." href="/reforger-c130-docs/advanced/faq/" />
+</CardGrid>

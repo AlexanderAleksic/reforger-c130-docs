@@ -1,0 +1,96 @@
+---
+title: 'Quick start: first flight'
+description: A short guided first flight in the C-130J, from cold and dark to parked again.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page walks you through one short flight, from cold and dark to parked again, without explaining every system. Each step links to the page that covers it in depth.
+
+You need a C-130J on or next to a runway. A Game Master can place one from the vehicle list. See [Game Master](/reforger-c130-docs/advanced/game-master/).
+
+## How the cockpit works
+
+Most switches are **cockpit actions**: look at the control, scroll to pick the action and press <kbd>F</kbd>. Dials such as the throttle and trim are set by holding <kbd>F</kbd> and turning the mouse wheel. Flying keys (throttle, stick, gear, flaps) only work for the crew member who has the controls. See [Cockpit, seats and crew](/reforger-c130-docs/basics/cockpit-and-crew/).
+
+## 1. Start up
+
+<Steps>
+
+1. Get in the **pilot** seat and use **Close Door**.
+2. On the battery switch, use **Battery: ON**.
+3. On the APU switch, use **APU: START** and wait 15 seconds, until the action reads **APU: STOP**.
+4. On the engine start panel, use **Start engines**. The engines start one after another. All four are running after about 70 seconds.
+5. Leave the APU running. It cannot be stopped while an engine runs.
+
+</Steps>
+
+Details: [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).
+
+## 2. Taxi
+
+<Steps>
+
+1. Release the parking brake: tap <kbd>Space</kbd>, or use **Parking brake: SET - release** in the cockpit.
+2. Add a little throttle with <kbd>Shift</kbd>. <kbd>Ctrl</kbd> reduces it. The throttle moves 50% per second while you hold the key and stays where you leave it.
+3. Steer the nose wheel with <kbd>Q</kbd> / <kbd>E</kbd>, not <kbd>A</kbd> / <kbd>D</kbd>. Hold <kbd>Space</kbd> to brake.
+4. Line up on the runway centreline and stop.
+
+</Steps>
+
+Details: [Taxi and takeoff](/reforger-c130-docs/basics/taxi-and-takeoff/).
+
+## 3. Take off
+
+<Steps>
+
+1. Lower the flaps with <kbd>F</kbd>. There is one flap setting, used for takeoff and landing.
+2. Press <kbd>Home</kbd> to centre the trim.
+3. Apply full throttle (hold <kbd>Shift</kbd>).
+4. At about **190–200 km/h (around 105 kt)**, pull back gently with <kbd>S</kbd> and hold the nose 8–10° up.
+5. Once you are climbing, raise the gear with <kbd>N</kbd>.
+6. Raise the flaps with <kbd>F</kbd>.
+
+</Steps>
+
+<Aside type="note">
+Rotation and approach speeds are estimates based on the flight model's numbers. A heavily loaded aircraft needs more speed. Watch the aircraft, not just the number.
+</Aside>
+
+## 4. Fly a circuit
+
+With flight assist on (it always is), the aircraft holds its pitch attitude when you let go of the stick. Use <kbd>Page Up</kbd> / <kbd>Page Down</kbd> to trim. Climb to a safe height, turn around, and fly back towards the runway.
+
+If you want a break, the autopilot holds your current heading, altitude and speed. See [Autopilot](/reforger-c130-docs/flying/autopilot/).
+
+## 5. Land
+
+<Steps>
+
+1. Line up with the runway from a few kilometres out.
+2. Lower the gear with <kbd>N</kbd> and the flaps with <kbd>F</kbd>.
+3. Fly the approach at about **210–230 km/h (115–125 kt)**, descending gently.
+4. Touch down at about **185–200 km/h (100–110 kt)**. Keep the sink rate low: 4 m/s or more blows tyres, 7 m/s or more collapses the gear.
+5. Pull the throttle to idle with <kbd>Ctrl</kbd>, press <kbd>U</kbd> for reverse thrust, then add throttle to slow down. Reverse does nothing at idle.
+6. Hold <kbd>Space</kbd> to brake. At walking pace, press <kbd>U</kbd> again to cancel reverse, or the aircraft starts rolling backwards.
+
+</Steps>
+
+Details: [Approach and landing](/reforger-c130-docs/basics/landing/).
+
+## 6. Shut down
+
+<Steps>
+
+1. Stop, then tap <kbd>Space</kbd> to set the parking brake (it only sets below about 11 km/h).
+2. Use **Shut down engines**.
+3. Use **APU: STOP**, then **Battery: OFF**.
+4. Get out.
+
+</Steps>
+
+Details: [Shutdown and parking](/reforger-c130-docs/basics/shutdown/).
+
+## Where to go next
+
+You have now used everything the Basics section covers. Read it next, in order, for the full detail. Then move on to [Flying](/reforger-c130-docs/flying/flight-model/) and the systems pages.

@@ -1,0 +1,98 @@
+---
+title: GBU-43/B MOAB
+description: Loading, fuzing and dropping the GBU-43/B MOAB from the C-130J, what the blast does and how high to release it.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers the GBU-43/B MOAB: getting it from its truck into the aircraft, setting its fuze, dropping it, and staying clear of the blast.
+
+## What you need
+
+- A **M923A1 GBU-43/B Cargo** truck. It spawns with the MOAB already on its bed, sitting on its pallet. A Game Master can place it (see [Game Master](/reforger-c130-docs/advanced/game-master/)).
+- A C-130J with an **empty cargo bay**.
+
+The MOAB takes the whole bay. Nothing else can be loaded alongside it, and only one MOAB fits. The loaded pallet weighs 11,200 kg (a 9,800 kg bomb on a 1,400 kg pallet), so expect the aircraft to fly heavy. See [Handling and flight model](/reforger-c130-docs/flying/flight-model/).
+
+## Loading
+
+<Steps>
+
+1. Stop the C-130J on the ground and set the ramp to **horizontal** (see [Cargo ramp](/reforger-c130-docs/cargo/ramp/)).
+2. Back the truck up to the ramp. The truck must be within 40 m of the aircraft.
+3. Stop the truck.
+4. Walk to the rear of the pallet on the truck bed and use **Load MOAB into C-130**. The pallet moves from the truck into the bay.
+5. In the bay, use **Secure cargo** on the pallet to tie it down.
+
+</Steps>
+
+If the action is greyed out, its text tells you why:
+
+| Message | Fix |
+|---|---|
+| *Set the C-130 ramp to horizontal* | Put the ramp in the horizontal position, not closed or fully open. |
+| *Stop the C-130* | The aircraft must be standing still. |
+| *Stop the truck* | The truck must be at a standstill. |
+| *Cargo bay must be empty for a MOAB* | Unload everything else first. |
+| *A MOAB is already loaded* | Only one MOAB fits. |
+| *C-130 cargo bay full* | The bay has no room for the pallet. |
+
+The MOAB can only be loaded from its truck. If you unload it on the ground, the pallet stays where it is set down and cannot be loaded again.
+
+<Aside type="danger">
+Always secure the MOAB. Like any load, an untied pallet slides along the floor when the aircraft pitches or accelerates, and if the ramp is horizontal or fully open it slides out of the back. A MOAB that leaves the bay arms and goes off, even on the ground.
+</Aside>
+
+## Setting the fuze
+
+The fuze is set on the bomb itself, not in the cockpit. Stand next to the pallet (on the truck or in the bay) and use **MOAB fuze**. Hold the interaction and scroll to change the value, the same way as the cockpit dials.
+
+| Setting | Range | What happens |
+|---|---|---|
+| **MOAB fuze: CONTACT** | 0 m | The bomb goes off when it hits the ground. |
+| **MOAB fuze: AIRBURST *n* M** | 1 to 150 m, in 1 m steps | The bomb goes off at that height above the ground. |
+
+A new MOAB starts at **AIRBURST 2 M**, about where the real weapon bursts. The setting is stored on each bomb and is the same for every player. The bomb takes a copy of the value when it leaves the ramp, so changing the dial after release does nothing.
+
+## Releasing
+
+The MOAB is dropped through the normal cargo release system. Fly to the target with the ramp **horizontal**, then release it either with **RELEASE** on the Map page of the centre-right display, or with **Unload rear cargo** from the pilot or co-pilot seat. The release computer on the Map page takes the fuze height into account when it predicts the impact point. The full procedure is in [Airdrop](/reforger-c130-docs/cargo/airdrop/).
+
+When the pallet clears the ramp:
+
+- The pallet has no parachute. The bomb separates from it and falls on its own, swinging round to point nose-down within a couple of seconds.
+- The bomb keeps almost all of the aircraft's forward speed, so it falls nearly straight down under the aircraft's track, not behind it.
+- The empty pallet falls away separately and disappears 20 seconds after it lands.
+
+<Aside type="caution">
+Neither release action checks your height. Pressing **RELEASE** or **Unload rear cargo** on the ground with the ramp horizontal pushes the MOAB out behind the aircraft, where it detonates. To take a MOAB off on the ground safely, use **Unload cargo** at the rear ramp with the aircraft stopped: that sets the pallet down without arming it.
+</Aside>
+
+## The blast
+
+When the fuze fires, the bomb explodes with several overlapping effects:
+
+| Effect | Reach |
+|---|---|
+| Main blast | 220 m. Full strength out to about 110 m, falling to about a third at 220 m. |
+| Secondary blast | 140 m. |
+| Fire | 110 m. Sets things alight. |
+| Blast wave (pushes vehicles and bodies) | 340 m. Strongest near the centre, fading to nothing at the edge. |
+| Fragments | 400 m. |
+
+You also see a visible shockwave dome that expands in half a second, a ring of fireballs about 30 m across the impact point with a rising fireball column about 45 m tall, a lingering smoke column and a large scorch mark. The explosion sound changes with distance.
+
+If the bomb ever comes to rest without exploding, a backup fuze sets it off where it lies within a fraction of a second.
+
+## Safe release height
+
+The aircraft is roughly above the bomb when it goes off, so your distance from the blast is about your release height, plus whatever you climb during the fall. To keep the aircraft outside the 400 m fragment radius:
+
+- Release from **at least 500 m above the ground**, and climb away after release.
+- Never release below about 350 m. Below that, the aircraft is inside the blast wave.
+
+These figures come from the blast ranges above. They are guidance, not a limit enforced by the game.
+
+Friendly troops on the ground should be well beyond 400 m from the aim point.
+
+Next: [Radar](/reforger-c130-docs/advanced/radar/).

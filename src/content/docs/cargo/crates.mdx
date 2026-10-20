@@ -1,0 +1,80 @@
+---
+title: Cargo crates
+description: Placing, moving, loading, securing and opening the C-130J airdrop cargo box, and setting its landing beacon.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers the **Airdrop cargo box**: a storage pallet you fill with equipment, push into position by hand, load into the C-130 and parachute to troops in the field.
+
+## The cargo box at a glance
+
+| Property | Value |
+| --- | --- |
+| Weight in the cargo bay | 1,000 kg (fixed) |
+| Inventory capacity | Up to 4,500 kg of equipment |
+| Parachute | One canopy |
+| Interaction range | About 2 m |
+
+The box always counts as **1,000 kg** for the cargo bay, the Manifest and the parachute, however much you put inside it.
+
+## Placing a cargo box
+
+The box is placed by a Game Master. It is listed as **Airdrop cargo box** among the placeable systems. Mission makers can also place it in the World Editor. See [Game Master](/reforger-c130-docs/advanced/game-master/).
+
+## Filling it
+
+Use the box's storage action to open its inventory and put equipment in, like any other storage container. Anything inside travels with the box and is waiting for whoever opens it at the drop zone.
+
+## Moving it by hand
+
+The box cannot be picked up, but you can push it around on the ground. All four movement actions are **held**: the box keeps moving for as long as you hold the action and stops when you let go.
+
+| Action | Effect |
+| --- | --- |
+| **Push crate** | Moves the box directly away from you at 0.5 m/s. |
+| **Pull crate** | Moves the box toward you at 0.5 m/s. |
+| **Turn crate left** | Rotates it counter-clockwise at 45 degrees per second. |
+| **Turn crate right** | Rotates it clockwise at 45 degrees per second. |
+
+The box follows the ground as it moves. Push and pull work along the line between you and the box, so stand on the opposite side from where you want it to go.
+
+## Loading it into the C-130
+
+<Steps>
+
+1. Push the box to within **10 m of the centre of the aircraft**. This is measured from the middle of the C-130, not from the ramp, so a box parked behind the tail may be too far away. If the action does not appear, push it further forward.
+2. Set the beacon timing now if you want to change it (see below). It is easiest while you are standing next to the box.
+3. Use **Load into C-130**. Like vehicle loading, the label shows the weight, the change in centre of gravity, the new gross weight and how many more boxes still fit.
+4. Tie it down: **Secure cargo (tie down)** on the box, or the cockpit's secure action for everything at once.
+
+</Steps>
+
+The box takes floor space in the bay like any other load. See [Loading vehicles](/reforger-c130-docs/cargo/vehicles/) for the bay limits, securing and the Manifest display.
+
+## Landing beacon
+
+Each box has a flashing red beacon so it can be found in the dark. Use **Beacon timing** on the box to choose when it lights up. The action name shows the current setting:
+
+- **Beacon: after landing** (default): the beacon starts when the box touches down. A falling box does not give itself away to anyone watching the sky.
+- **Beacon: during descent**: the beacon lights as soon as the box leaves the ramp, so you can follow it down.
+
+Either way the beacon flashes about once every 1.2 seconds and burns out **10 minutes after touchdown**. Vehicles never get a beacon.
+
+## At the drop zone
+
+Each dropped box puts a **CDS DROP - CARGO** marker on everyone's map. While it falls the marker tracks where it is expected to land, and after touchdown it marks where it actually came down.
+
+A few seconds after landing the box settles and stays put. You can push it around by hand again.
+
+Open the box's storage to take the equipment out. Opening it also **removes its map marker** for everyone, which tells other players the drop has been collected.
+
+<Aside type="tip">
+Mark collected drops by opening them, even if you take nothing. Otherwise the marker stays on the map.
+</Aside>
+
+## Unloading boxes on the ground
+
+Boxes unload like vehicles: stop the aircraft and use **Unload cargo** at the ramp. See [Loading vehicles](/reforger-c130-docs/cargo/vehicles/#unloading-on-the-ground). Unloaded boxes are set down at least 12 m behind the aircraft's centre, so push them forward before loading them again.
+
+Next: [Airdrop](/reforger-c130-docs/cargo/airdrop/).

@@ -1,0 +1,85 @@
+---
+title: Handling and flight model
+description: How the C-130J flies - weight and inertia, stall behaviour, flight assist, wind, engine-out handling and what the flight model does and does not simulate.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page explains how the C-130 handles in the air and on the ground, so you know what to expect from the controls.
+
+## How lift is worked out
+
+The aircraft does not use the vanilla airplane physics. It has its own flight model that works out lift and drag on each part of the airframe separately: inner and outer wings, ailerons, flaps, horizontal and vertical tail, elevators, rudder and the fuselage side. Because of that:
+
+- the aircraft responds to its real angle to the airflow, not to a scripted "speed = lift" rule,
+- sideslip produces a side force on the fin and fuselage, so the nose weathervanes into the airflow,
+- rolling and pitching create airflow differences across the wings and tail that damp the motion naturally.
+
+## Weight and inertia
+
+- **Mass**: about 50 t with full fuel. Burning fuel makes the aircraft lighter as you fly. Cargo adds its own weight and moves the centre of gravity. See [Fuel](/reforger-c130-docs/systems/fuel/) and [Loading vehicles](/reforger-c130-docs/cargo/vehicles/).
+- **Thrust**: four engines, each giving up to 65 kN. Engine power follows the throttle within about a second. At 0% the engines idle and give no thrust.
+- **Control response**: the inputs ease in (roll reaches full in 0.5 s, pitch and rudder in about 0.7 s). Combined with the aircraft's mass, it feels heavy and deliberate. Lead your inputs and expect the aircraft to keep turning briefly after you let go.
+
+A fuel imbalance between the left and right tanks creates a steady rolling tendency toward the heavy side. The fuel panel can balance it. See [Fuel](/reforger-c130-docs/systems/fuel/).
+
+## Stall behaviour
+
+- The wings stall at about 16° angle of attack. Because the wings are set at a slight angle on the fuselage, that is roughly 13° nose-up relative to your flight path.
+- Past the stall, lift does not drop off a cliff. It fades smoothly over the next 15° while drag rises sharply. The aircraft mushes, sinks and loses speed rather than snapping.
+- Recovery: lower the nose, add power, and let the speed build before you pull again.
+- With flaps down the wing gives more lift, so you can fly slower. The estimated stall speed at full fuel and no cargo is around 160 km/h with flaps down and around 170 km/h with flaps up. A heavier aircraft stalls faster.
+
+The aircraft's warning system gives a stall warning with a stick shaker (gamepad rumble), plus ground-proximity and traffic callouts. You can turn GPWS and TCAS off with **Disable GPWS** / **Disable TCAS** in the cockpit.
+
+## Speed limits
+
+The flight model has no built-in top speed. Drag and thrust set the maximum level speed. The warning system gives an **overspeed** warning, and flying past it damages the airframe, so do not ignore it. In a dive the C-130 builds speed quickly.
+
+The autopilot accepts target speeds from 60 to 360 kt. See [Autopilot](/reforger-c130-docs/flying/autopilot/).
+
+## Flight assist
+
+Flight assist is **on by default** and makes the aircraft much easier to fly with a keyboard. It does two things:
+
+1. **Rotation damping.** Pitch, roll and yaw rotation is gently slowed, more strongly at higher speed. The aircraft settles instead of wallowing.
+2. **Auto-trim and attitude hold.**
+   - While you hold pitch input, the trim slowly takes over that input, so you need less and less stick to hold a climb or descent.
+   - When you release the stick, the aircraft locks onto the pitch angle it had at that moment and trims itself to hold it. It aims slightly ahead of where the nose was moving, so it does not overshoot.
+   - Using the manual trim keys overrides the hold until you let go.
+
+Auto-trim pauses while the autopilot is engaged, because the autopilot flies the pitch itself.
+
+The checklist display shows the state as **FLIGHT ASSIST ON/OFF**, and a warning light comes on when it is off. The current version has no cockpit switch for flight assist, so it stays on. See [Trim and flaps](/reforger-c130-docs/flying/trim-and-flaps/) for manual trim.
+
+## Wind and turbulence
+
+The aircraft flies through the weather's wind:
+
+- **Wind** is applied at full strength. You will see crosswind drift, a difference between airspeed and ground speed, and weathervaning.
+- **Gusts** add smooth turbulence of up to about 30% of the wind speed. Vertical bumps are about half as strong as horizontal ones. Calm weather means smooth air.
+- **Near the ground** the wind weakens: at the surface it is about half its full strength, and it builds back to full by about 150 m above the ground. Expect the crosswind to change as you descend on final.
+- **On the ground** below walking pace, the tyres stop the aircraft from swinging into the wind.
+
+## Altitude
+
+In the current tuning, air density does not change with height, so the aircraft climbs, turns and stalls the same at every altitude. Altitude is limited only by how high you want to climb. The autopilot accepts targets up to 40,000 ft.
+
+## Ground handling
+
+- Nose wheel steering is on the rudder keys. You get full authority up to about 29 km/h, fading to 12% at about 160 km/h.
+- The wheel brakes are strong but realistic. A full stop from landing speed takes a good length of runway without reverse thrust.
+- There is no separate ground-effect model. The aircraft does not float on a cushion of air in the flare.
+
+## Damage and failures
+
+- **Engine failure.** A failed, burning or stopped engine produces no thrust. The engines sit off-centre, so losing one on a side makes the aircraft yaw toward the dead engine. Hold it with rudder and trim. The checklist reminds you: "ENGINE OUT - TRIM AGAINST THE ASYMMETRY". See [Engines and oil](/reforger-c130-docs/systems/engines/) and [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/).
+- **Fuel starvation.** An engine that cannot get fuel flames out. See [Fuel](/reforger-c130-docs/systems/fuel/).
+- **Hard landings** blow tyres or collapse the gear. See [Approach and landing](/reforger-c130-docs/basics/landing/#touchdown-limits).
+- **Destroyed.** A destroyed aircraft produces no lift and no thrust.
+
+<Aside type="tip">
+For the "feel" of the aircraft: fly it like a heavy transport. Make small, early inputs, trim for every attitude change, and plan your energy. Thrust changes take effect quickly, but 50 tonnes take a while to change speed.
+</Aside>
+
+Next: [Trim and flaps](/reforger-c130-docs/flying/trim-and-flaps/).

@@ -1,0 +1,82 @@
+---
+title: Approach and landing
+description: Approach configuration, speeds, touchdown limits, thrust reverse and braking for the C-130J.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers the approach, touchdown and rollout.
+
+## Approach checklist
+
+The checklist display switches to **APPROACH / LANDING** when you lower the gear or descend below 900 m above the ground. It wants:
+
+- gear **down**,
+- flaps **set** (down),
+- GPWS on, lights on,
+- cargo secured,
+- autopilot **off** before touchdown.
+
+The hint line reads "GEAR NOT DOWN", "DISENGAGE AUTOPILOT BEFORE TOUCHDOWN" or "FLAPS FOR LANDING" until you are configured. Then it reads "STABLE - FLY IT DOWN".
+
+## Procedure
+
+<Steps>
+
+1. **Slow down and descend.** Reduce throttle with <kbd>Ctrl</kbd>. If you used the autopilot, disengage it now (**Disengage autopilot**, or move the stick).
+
+2. **Gear down.** Press <kbd>N</kbd> (or **Lower landing gear**). It takes about 3 seconds to extend.
+
+3. **Flaps down.** Press <kbd>F</kbd> (or **Lower flaps**). They extend over 2 seconds and add lift and drag.
+
+4. **Lights.** Hold <kbd>L</kbd> for the landing lights (tap <kbd>L</kbd> toggles the taxi lights separately).
+
+5. **Fly the approach** at roughly **210-230 km/h (115-125 kt)** with flaps down. Control the descent rate with throttle and pitch.
+
+6. **Touch down gently** at roughly **185-200 km/h (100-110 kt)**, main wheels first, with the nose slightly up.
+
+7. **Throttle to idle** (<kbd>Ctrl</kbd>), then engage **thrust reverse** (<kbd>U</kbd>) and add throttle (<kbd>Shift</kbd>) to slow down.
+
+8. **Brake** by holding <kbd>Space</kbd>.
+
+9. **At walking pace**, throttle to idle and turn thrust reverse **off** (<kbd>U</kbd>). Otherwise the aircraft starts rolling backwards.
+
+10. **Taxi clear** and continue with [Shutdown and parking](/reforger-c130-docs/basics/shutdown/).
+
+</Steps>
+
+<Aside type="note">
+The speeds above are estimates worked out from the aircraft's wing and weight values. At full fuel and no cargo, the wings stall at around 160 km/h with flaps down and about 170 km/h with flaps up. A heavier aircraft stalls faster and needs more speed. Light aircraft can fly slower.
+</Aside>
+
+## Touchdown limits
+
+The gear checks how hard you land:
+
+| Sink rate at touchdown | Result |
+|---|---|
+| Below 4 m/s (about 790 ft/min) | Normal landing. |
+| 4 m/s or more | Hard landing: at least one tyre blows. A blown tyre sags, grips poorly, brakes badly and pulls the aircraft toward that side. |
+| 7 m/s or more (about 1,380 ft/min) | Gear collapse: the aircraft drops onto its belly and loses a quarter of its hull health. |
+
+A **GEAR FAULT** warning appears on the checklist and warning panel after either result. Repairing the aircraft fully clears the damage. See [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/).
+
+<Aside type="danger">
+Landing with the gear up drops the aircraft onto its belly. The approach checklist and the gear warning are there to catch it.
+</Aside>
+
+## Thrust reverse
+
+Thrust reverse turns the propeller thrust backwards:
+
+- Reverse thrust is **40% of forward thrust at your current throttle**. At idle it does nothing. Engage it, then add throttle.
+- It stays on until you press <kbd>U</kbd> again (or use **Thrust reverse: OFF** on the throttle quadrant). A reverse icon shows on the vehicle HUD while it is engaged.
+- It is not blocked in the air. Only engage it once you are on the ground.
+- On the ground you can use it to back up slowly.
+
+## Braking and the parking brake
+
+- **Wheel brakes** (hold <kbd>Space</kbd>) only work with weight on the wheels. Full braking stops the aircraft firmly but not instantly. Use reverse thrust first at high speed.
+- **Parking brake**: tap <kbd>Space</kbd> or use **Parking brake: RELEASED - set** on the gear panel. It only sets below about 11 km/h ("Too fast - slow to a walk first"). Once set it holds the aircraft completely still.
+
+Next: [Shutdown and parking](/reforger-c130-docs/basics/shutdown/).

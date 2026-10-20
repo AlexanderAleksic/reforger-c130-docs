@@ -1,0 +1,121 @@
+---
+title: Troubleshooting and FAQ
+description: Fixes for common C-130J problems such as engines not starting, the ramp not moving, cargo that will not load and an aircraft that will not roll, plus notes on the debug keys.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page answers the questions that come up most often and explains why an action is greyed out or missing.
+
+<Aside type="tip">
+Most greyed-out actions tell you why in their label or in the "cannot perform" text, for example *Start engines (APU not running)* or *Jump (set ramp to horizontal first)*. Read the label first.
+</Aside>
+
+## I can't see any cockpit actions
+
+Cockpit switches are only offered to the player sitting in the **pilot** or **co-pilot** seat. Cockpit passengers, cargo bay passengers and anyone standing in the aircraft do not get them. See [Cockpit, seats and crew](/reforger-c130-docs/basics/cockpit-and-crew/).
+
+## The engines won't start
+
+Work through the power-up chain in order. Each step is locked until the previous one is done:
+
+1. **Battery: ON.** The APU switch reads *APU (battery off)* until the battery is on.
+2. **APU: START.** The APU takes about 15 seconds to spool up. Until it is fully running, the engine switches read *Start engines (APU not running)* or *Engine 1 (APU not running)*.
+3. **Start engines.** The engines light one after another, 12.5 seconds apart, and each takes about 31 seconds to spool up. A full four-engine start takes a little over a minute. While it runs, the switch reads *Abort start (engines starting...)*: pressing it again stops the start.
+
+If the switches respond but an engine will not stay running:
+
+- **Out of fuel.** An engine that gets no fuel for 4 seconds flames out. Check the tanks and crossfeed, see [Fuel](/reforger-c130-docs/systems/fuel/).
+- **Engine failed.** An engine that has caught fire, or been hit hard enough, fails. It produces no thrust and its propeller winds down, even if the switch shows it running. A full vehicle repair fixes it. See [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/).
+- **Aircraft destroyed.** When the aircraft is destroyed, the battery, APU and all engines are shut down.
+
+Full procedure: [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).
+
+## I can't turn off the battery or the APU
+
+While any engine is running or starting, the battery and APU switches are locked. Shut the engines down first. See [Shutdown and parking](/reforger-c130-docs/basics/shutdown/).
+
+## The aircraft won't move
+
+- **Parking brake.** Every C-130J starts with the parking brake set. Release it with the **Parking brake: SET - release** action, or with the vehicle handbrake key (<kbd>Space</kbd> by default) while you are the pilot. While it is set, the aircraft is held at a standstill on the ground.
+- **Engines.** Only running engines give thrust. Check that all four are running and no engine has failed.
+- **Thrust reverse.** If **Thrust reverse: ON** is selected, throttle pushes you backwards.
+- **Throttle.** A heavy aircraft needs a fair amount of throttle to start rolling. See [Taxi and takeoff](/reforger-c130-docs/basics/taxi-and-takeoff/).
+
+## I can't set the parking brake
+
+The parking brake cannot be set above walking pace (3 m/s, about 11 km/h). The action reads *Too fast - slow to a walk first*. Stop with the wheel brakes, then set it.
+
+## The gear won't come up
+
+On the ground the gear is locked down. The action reads *Raise landing gear (locked: weight on wheels)*. The lock also holds below about 2.5 m above the ground, so wait until you are properly airborne.
+
+## The ramp won't open (or close)
+
+- **You are in the wrong seat.** Ramp actions are only for the pilot, the co-pilot and the jumpmaster station. The ramp key (<kbd>J</kbd> by default) only works for the player flying, and only switches between closed and fully open. Use the ramp actions for the horizontal position.
+- **The ramp is still moving.** After each command the ramp is busy until it has finished travelling: about 8 seconds for a full closed-to-open movement, about 4 seconds to or from horizontal. Actions read *(ramp busy)* meanwhile.
+- **It is already there.** An action for the position the ramp is already in reads *(already closed)*, *(already horizontal)* or *(already fully open)*.
+
+The ramp does not need electrical power or hydraulic pressure to move. See [Cargo ramp](/reforger-c130-docs/cargo/ramp/).
+
+## I can't load a vehicle or crate
+
+**Load into C-130** is on the vehicle or crate itself, not on the aircraft. On vehicles, look for it at the front of the vehicle or at the hood.
+
+| Problem | Fix |
+|---|---|
+| The action does not appear at all | Get everyone out of the vehicle: occupied vehicles cannot be loaded. Move it within 10 m of the centre of the aircraft, for example onto the ramp. Make sure it is not attached to or carried by something else. |
+| *Not a loadable item* | Only vehicles and cargo boxes can be loaded. |
+| *Too wide / Too tall / Too long* | The bay takes loads up to 3.0 m wide, 3.0 m tall and 12.2 m long. The message gives the measured size. |
+| *No room: needs X of floor* | The bay is too full for this load. The message tells you how much floor it needs and how much is free. |
+| *A MOAB takes the whole cargo bay* | A MOAB is loaded. Nothing else can join it. |
+
+The action label also shows the load's weight, how far it moves the centre of gravity, and the gross weight afterwards. If it reads *OUT OF LIMITS*, the load will make the aircraft hard to control. Details: [Loading vehicles](/reforger-c130-docs/cargo/vehicles/) and [Cargo crates](/reforger-c130-docs/cargo/crates/). For the MOAB see [GBU-43/B MOAB](/reforger-c130-docs/advanced/moab/).
+
+## My cargo slid around or fell out of the back
+
+Freshly loaded cargo is **unsecured**. Unsecured loads slide along the floor when the aircraft pitches (from about 12 degrees) or accelerates hard, and if the ramp is horizontal or fully open, a load that reaches the rear of the bay rolls out. Use **Secure cargo** on every load after loading it.
+
+## I can't unload cargo
+
+- **On the ground,** **Unload cargo** (at the rear ramp) needs the aircraft on the ground and stopped. It reads *Unload cargo (stop the plane first)* while you are still rolling.
+- **From the cockpit,** **Unload rear cargo** and **Unload all cargo** need the ramp at **horizontal**.
+- **From the Map display,** **Release cargo** reads *No cargo aboard* or *Ramp not horizontal* when it cannot drop.
+
+See [Airdrop](/reforger-c130-docs/cargo/airdrop/).
+
+## I can't get into a jump position or jump
+
+- **Enter jump position** only appears while the jump light is **RED**. Ask the jumpmaster or the cockpit crew to set it. The light can be set to red at any time, but it cannot go **GREEN** until the ramp is horizontal (*Set ramp to horizontal (airdrop) first*).
+- **Jump** reads *Jump (set ramp to horizontal first)* until the ramp is horizontal.
+
+See [Paratroopers](/reforger-c130-docs/cargo/paratroopers/).
+
+## I fell out during flight
+
+There are only a few ways to leave the aircraft in the air:
+
+- **Walking out of the open ramp.** Nothing stops you walking off the end of a horizontal or fully open ramp. Inside the aircraft you stay with it through turns and climbs, but once you step off the ramp you are in freefall. If you wear a parachute from the parachute framework you can open it, otherwise the fall is likely fatal.
+- **Using Jump out from a passenger seat.** The passenger seats have the game's standard jump-out action. Use **Get out** instead to stand up inside the aircraft.
+
+Getting out of a seat in flight is safe: you are placed inside the aircraft and protected from damage for 2 seconds. See [Multiplayer notes](/reforger-c130-docs/advanced/multiplayer/).
+
+## The radar shows nothing
+
+The radar only shows vehicles more than 15 m above the ground, within the selected range. Aircraft on the ground do not appear. See [Radar](/reforger-c130-docs/advanced/radar/).
+
+## The warnings keep calling out
+
+The GPWS and TCAS warnings come from the TCAS/GPWS mod. The pilot or co-pilot can switch them off with **Disable GPWS** and **Disable TCAS**. See [Installation](/reforger-c130-docs/start/installation/).
+
+## Do the F3, F4 and R keys do anything?
+
+The mod registers three test keys in the vehicle controls: <kbd>F3</kbd>, <kbd>F4</kbd> and <kbd>R</kbd>. In the released mod they do nothing:
+
+| Key | Intended for | In the released mod |
+|---|---|---|
+| <kbd>R</kbd> | Instant start of battery, APU and all engines | Switched off. Does nothing. |
+| <kbd>F4</kbd> | Instantly dump all loaded cargo | Switched off. Does nothing. |
+| <kbd>F3</kbd> | Test jump | Not connected to anything. Does nothing. |
+
+The two working ones are developer switches that are off in the published aircraft, and only respond to the pilot even when switched on. If you have bound something else to these keys, you do not need to change it. The mod's other debug tools live in the game's diagnostic menu, which is only available in the diagnostic and Workbench builds of the game, not in the normal game.

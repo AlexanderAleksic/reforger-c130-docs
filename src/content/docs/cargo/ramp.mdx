@@ -1,0 +1,72 @@
+---
+title: Cargo ramp
+description: Ramp positions, who can operate the C-130J rear ramp, keybinds, travel times and which cargo operations need which position.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page covers the rear cargo ramp: its three positions, who can move it, and which cargo jobs need it in which position.
+
+## The three positions
+
+| Position | What it is for |
+| --- | --- |
+| **Closed** | Normal flight, takeoff and landing. |
+| **Horizontal** | The ramp is level with the cargo floor. This is the airdrop position: in-flight unloading, the release button, paratrooper jumps and LAPES all work here. |
+| **Fully open** | The ramp is lowered all the way. LAPES also works here, but in-flight unloading, the release button and paratrooper jumps do **not**. |
+
+<Aside type="caution">
+In the air, "open" is not enough. Most airdrop actions check for **horizontal** specifically. If an action says *(set ramp to horizontal first)* while the ramp is fully open, close it partway by choosing **Open ramp to horizontal (airdrop)**.
+</Aside>
+
+## Travel time
+
+A full move between closed and fully open takes about **8.3 seconds**. Moving to or from horizontal is half that travel, about **4 seconds**.
+
+While the ramp is moving it is locked: you cannot command a new position until it stops, and the ramp actions show *(ramp busy)*. An action for the position the ramp is already in is greyed out with *(already closed)*, *(already horizontal)* or *(already fully open)*.
+
+## Who can operate it
+
+| Who | How |
+| --- | --- |
+| Pilot flying (whoever has the controls) | Ramp hotkey, see below. |
+| Pilot or co-pilot | The ramp actions in the cockpit: **Close ramp**, **Open ramp to horizontal (airdrop)**, **Open ramp fully**. |
+| Jumpmaster | The same three actions from the jumpmaster position at the rear of the cargo bay, next to the jump lights. See [Paratroopers](/reforger-c130-docs/cargo/paratroopers/). |
+
+Passengers and players standing outside the aircraft cannot move the ramp.
+
+## Keybind
+
+| Input | Default |
+| --- | --- |
+| Keyboard | <kbd>J</kbd> |
+| Gamepad | <kbd>B</kbd> |
+| Joystick | Button 3 |
+
+The hotkey only works for the pilot who currently has the controls. It only toggles between **closed** and **fully open**: from closed it opens fully, and from any other position (horizontal or fully open) it closes. To reach horizontal, use the cockpit or jumpmaster action.
+
+## Hydraulics and speed
+
+- The ramp does not need hydraulic pressure to move, but moving it draws on the utility hydraulic system, so you will see the pressure sag briefly on the gauge. See [Hydraulics](/reforger-c130-docs/systems/hydraulics/).
+- The mod does not enforce a speed limit for the ramp. You can open it at any speed, so fly the drop at a sensible speed for the job (see [Airdrop](/reforger-c130-docs/cargo/airdrop/) and [LAPES](/reforger-c130-docs/cargo/lapes/)).
+- The takeoff checklist on the MFD expects the ramp closed and shows **CLOSE RAMP AND DOOR BEFORE TAKEOFF** if it is not. See [Cockpit displays](/reforger-c130-docs/systems/mfd/).
+
+<Aside type="danger">
+Loads that are not tied down slide along the floor when you pitch up or accelerate. If one reaches the rear of the bay while the ramp is **horizontal or fully open**, it falls out and deploys its parachute. Secure your cargo before you open the ramp in flight. See [Loading vehicles](/reforger-c130-docs/cargo/vehicles/#securing-cargo).
+</Aside>
+
+## What needs which position
+
+| Operation | Ramp position required |
+| --- | --- |
+| Loading a vehicle or crate on the ground | None. The load action does not check the ramp. |
+| **Unload cargo** on the ground, from the ramp | None. The aircraft must be stopped. |
+| **Unload rear cargo** / **Unload all cargo** (cockpit) | Horizontal |
+| **Release** button on the Map display | Horizontal |
+| Jump light **GREEN - GO** | Horizontal |
+| **LAPES extraction (rear)** | Horizontal or fully open |
+| Loading the MOAB | Horizontal. See [GBU-43/B MOAB](/reforger-c130-docs/advanced/moab/). |
+
+The cargo bay lights can also be switched from the ramp area. See [Lights and doors](/reforger-c130-docs/systems/lights-and-doors/).
+
+Next: [Loading vehicles](/reforger-c130-docs/cargo/vehicles/).

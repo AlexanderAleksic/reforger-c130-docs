@@ -1,0 +1,59 @@
+---
+title: Game Master
+description: What the C-130J mod adds to Game Master, how to place the aircraft, cargo boxes and the MOAB truck, and how they behave once placed.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers what a Game Master can place from the mod and what to expect from those entities once they are in the world.
+
+## What the mod adds
+
+| Entity | Where to find it | Notes |
+|---|---|---|
+| **C130J Super Hercules** | Vehicles, US faction (airplane, modded content) | The aircraft itself. |
+| **M923A1 GBU-43/B Cargo** | Vehicles, US faction (truck, modded content) | An M923A1 truck with a GBU-43/B MOAB on its bed. |
+| **Airdrop cargo box** | Systems | A storage pallet that can be filled with gear, moved by hand, loaded and airdropped. |
+
+Use the content browser filters for the US faction or for modded content to find them quickly.
+
+## Placing the aircraft
+
+<Steps>
+
+1. Open the Game Master editor and find **C130J Super Hercules** in the vehicle list.
+2. Place it on flat, open ground. A runway or a large apron is best: the aircraft is big and needs room to taxi.
+3. Close the editor and board through the crew door, or possess a character and walk to it.
+
+</Steps>
+
+A freshly placed C-130J is always **cold and dark**: battery off, APU off, engines off, ramp closed. The **parking brake is set**, so it stays where you put it even on a slope. The crew has to release it before the aircraft can roll (see [Taxi and takeoff](/reforger-c130-docs/basics/taxi-and-takeoff/)).
+
+<Aside type="note">
+The aircraft is flown by players only. The mod has no AI flight logic, so filling the pilot seat with an AI crew member does not make the aircraft fly.
+</Aside>
+
+## Placing the MOAB truck
+
+The **M923A1 GBU-43/B Cargo** spawns ready to go, with the MOAB pallet already on the truck bed. Drive it to a C-130J and load the bomb as described in [GBU-43/B MOAB](/reforger-c130-docs/advanced/moab/). Placing it with crew puts an AI driver in the cab.
+
+<Aside type="caution">
+The MOAB has a 400 m danger radius. Keep this in mind when you place the truck and plan a drop near other players.
+</Aside>
+
+## Placing cargo boxes
+
+Place **Airdrop cargo box** entries wherever you want resupply. Players fill them from an arsenal or their own inventory, push them into position and load them into the aircraft. See [Cargo crates](/reforger-c130-docs/cargo/crates/).
+
+Vehicles you place need nothing special to be loadable: any vehicle that fits the bay can be loaded. See [Loading vehicles](/reforger-c130-docs/cargo/vehicles/).
+
+## Behaviour with the editor open
+
+- Opening the Game Master editor while you are using the cargo bay camera or a focused cockpit screen closes that view and returns you to the normal camera.
+- The names you see in the editor are also used on the aircraft's displays. The release button and the cargo manifest show each load by that name (for example *RELEASE M151A2 Utility Truck*), and a vehicle dropped by parachute gets a map marker such as *CDS DROP - M151A2 Utility Truck*.
+
+## Vehicle spawners
+
+Outside of Game Master, the C-130J is in the US faction vehicle catalog with a large vehicle slot and a supply cost of 1200, so scenarios that build their vehicle lists from the faction catalog can offer it.
+
+Next: [Multiplayer notes](/reforger-c130-docs/advanced/multiplayer/).

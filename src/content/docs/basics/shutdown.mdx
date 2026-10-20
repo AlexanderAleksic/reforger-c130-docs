@@ -1,0 +1,51 @@
+---
+title: Shutdown and parking
+description: Parking the C-130J and shutting it down - engines, APU, battery and leaving the aircraft.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page parks the aircraft and takes it back to cold and dark.
+
+## Procedure
+
+<Steps>
+
+1. **Stop the aircraft** with the wheel brakes (hold <kbd>Space</kbd>). Turn thrust reverse off (<kbd>U</kbd>) if it is still on.
+
+2. **Set the parking brake.** Tap <kbd>Space</kbd> or use **Parking brake: RELEASED - set** on the gear panel. It only sets below about 11 km/h.
+
+3. **Throttle to idle** with <kbd>Ctrl</kbd>.
+
+4. **Flaps up** (<kbd>F</kbd>) and lights off (<kbd>L</kbd>, or the light panel), if you want to leave the aircraft tidy.
+
+5. **Shut down the engines.** On the engine start panel, use **Shut down engines**. All four stop together and the engine sound fades out over a few seconds.
+
+6. **Stop the APU.** Use **APU: STOP**. This only works once every engine is off.
+
+7. **Battery off.** Use **Battery: OFF**. This only works with the APU stopped and no engine running.
+
+8. **Get out** with the get-out action. Open the crew door with **Open Door** if you want it open.
+
+</Steps>
+
+## Why the order matters
+
+The aircraft powers down in the reverse order it powered up:
+
+- the battery cannot be switched off while the APU is running or an engine is turning,
+- the APU cannot be stopped while an engine is turning.
+
+If a switch does nothing, the step before it has not been done yet.
+
+## Parking tips
+
+- **Always set the parking brake.** Without it the aircraft can roll. A freshly spawned C-130 has the parking brake set.
+- **Wind.** A parked aircraft with its wheels on the ground does not swing round in the wind.
+- **Cargo and ramp.** Close the ramp (<kbd>J</kbd>) before you leave if you do not want people walking in. See [Cargo ramp](/reforger-c130-docs/cargo/ramp/).
+
+<Aside type="note">
+If an engine fire or failure forces you down, the order still applies. Shut the engines down first, then the APU and battery. See [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/).
+</Aside>
+
+Next: [Handling and flight model](/reforger-c130-docs/flying/flight-model/).

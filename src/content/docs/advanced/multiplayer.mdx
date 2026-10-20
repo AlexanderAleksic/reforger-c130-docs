@@ -1,0 +1,66 @@
+---
+title: Multiplayer notes
+description: How the C-130J behaves in multiplayer, who controls what, what every player sees, known limitations and tips for server admins.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This page explains how the C-130J works on a multiplayer server: who controls what, what is shared between players, and what server admins should know.
+
+## Who controls the aircraft
+
+- **The pilot's game flies the aircraft.** The flight is simulated on the machine of the player in the pilot seat, and that player's game sends the aircraft's position, speed and rotation to the server about 60 times per second. The server passes it on to everyone else, who see a smoothed version.
+- **Switches are decided by the server.** When anyone presses a cockpit switch (battery, APU, engines, parking brake, ramp, MOAB fuze and so on), the request goes to the server, which applies it and tells every player. Two crew members pressing the same switch cannot end up seeing different results.
+- **Cockpit controls belong to the cockpit crew.** Almost every cockpit action is only offered to whoever is sitting in the pilot or co-pilot seat. Passengers cannot touch the cockpit. The ramp can also be worked from the jumpmaster station, see [Cargo ramp](/reforger-c130-docs/cargo/ramp/).
+- **Keyboard shortcuts only work for the pilot.** The ramp key and the parking brake key respond only to the player actually flying. See [Controls and keybinds](/reforger-c130-docs/basics/controls/).
+
+## What every player sees the same
+
+- Engine, APU and battery state, including start-up progress.
+- Ramp position, gear, flaps, lights and the parking brake.
+- Loaded cargo, its position in the bay (including unsecured loads sliding), and every load or unload.
+- The pilot's control inputs, so the yoke and throttles move for the co-pilot too.
+- Cockpit instruments, which read the same values on every seat.
+- MOAB fuze settings. Players who join late, or who arrive within range later, get the current setting.
+
+## What is local to each player
+
+Some things are worked out on your own game only and are not shared:
+
+- The **radar picture** and its range setting. See [Radar](/reforger-c130-docs/advanced/radar/).
+- The **cargo bay camera** and **focused screen** views.
+
+## Passengers and long distances
+
+Arma Reforger normally stops sending distant players and vehicles to your game to save bandwidth. The C-130J changes this in two ways:
+
+- **The aircraft is never culled.** Every player on the server always receives it, at any distance. You never see it pop in or vanish.
+- **People inside it are never culled.** Anyone standing or walking inside the aircraft is kept visible to every player at any distance, for as long as they are aboard. Seated passengers already travel with the vehicle.
+
+Without this, people walking in the cargo bay could disappear for other players once the aircraft flew far enough away.
+
+## Getting out in flight
+
+- Crew and passengers can leave their seats while the aircraft is moving or airborne. You are placed at the seat's exit point inside the aircraft and are protected from damage for 2 seconds, so a fast or rough moment does not hurt you.
+- You are also kept out of ragdoll for 1.5 seconds after leaving, so you do not flop over on exit.
+- The pilot and co-pilot cannot bail out with the game's jump-out action. Paratroopers leave through the jump positions, see [Paratroopers](/reforger-c130-docs/cargo/paratroopers/).
+
+## Known limitations
+
+- **Network lag affects what others see, not what the pilot flies.** Other players see the aircraft through a smoothed stream of positions. On a poor connection the pilot's aircraft can appear slightly behind or correct itself with a small jump for others. Large errors (over 5 m or 20 degrees) snap straight to the correct position.
+- **AI cannot fly the aircraft.** There is no AI pilot logic. AI can ride as passengers and paratroopers.
+- **The radar is per player.** Two crew members on different radar ranges see different pictures.
+
+## Tips for server admins
+
+- **Each C-130J is always sent to every player.** Because it is never culled, every aircraft on the map costs bandwidth for every connected player, all the time. Keep the number of C-130Js in a mission reasonable.
+- **People walking in the bay are always sent too.** The same applies to everyone standing inside an aircraft, for as long as they are aboard.
+- **Wreck debris cleans itself up.** The torn-off wings of a destroyed C-130J are removed after 60 seconds, and are not spawned at all for players more than 3 km away.
+- **Spent MOAB pallets are removed** 20 seconds after they land.
+- **The dedicated server skips visual work.** The radar and the MOAB explosion effects are only processed by players' games, not by a dedicated server.
+
+<Aside type="tip">
+Loaded vehicles are handed to the same player as the aircraft, so they stay in place in the bay while the aircraft moves.
+</Aside>
+
+Next: [Troubleshooting and FAQ](/reforger-c130-docs/advanced/faq/).

@@ -1,0 +1,54 @@
+---
+title: Power-up and engine start
+description: Taking the C-130J from cold and dark to four running engines - battery, APU and the automatic engine start sequence.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page takes you from a cold, dark aircraft to four running engines.
+
+## The power-up chain
+
+Power comes up in a fixed order. Each step needs the one before it:
+
+| Stage | Needs | Time |
+|---|---|---|
+| Battery on | Nothing | Instant |
+| APU running | Battery on | 15 seconds |
+| Engines running | APU running | About 69 seconds for all four |
+
+You cannot skip a step. The cockpit action names tell you what is missing, for example **APU (battery off)** or **Start engines (APU not running)**.
+
+## Procedure
+
+<Steps>
+
+1. **Get in as pilot or co-pilot** and close the crew door (**Close Door**). The parking brake is already set when the aircraft spawns.
+
+2. **Battery on.** Look at the battery switch and use **Battery: ON**.
+
+3. **Start the APU.** On the APU switch, use **APU: START**. While it spools up the action reads **APU: STOP (starting...)**. After 15 seconds the APU is running and the action reads **APU: STOP**.
+
+4. **Start the engines.** On the engine start panel, use **Start engines**. The engines light one after another, from engine 1 to engine 4, 12.5 seconds apart. Each takes 31 seconds to spool up, so all four are running about 69 seconds after you press the button. While this happens the action reads **Abort start (engines starting...)**.
+
+5. **Leave the APU running.** It cannot be switched off while any engine is running, so it keeps running for the whole flight. The APU caution light stays on, and that is normal.
+
+6. **Check the checklist display.** It moves from **BEFORE START** to **BEFORE TAKEOFF** once all four engines are running on the ground. Continue with [Taxi and takeoff](/reforger-c130-docs/basics/taxi-and-takeoff/).
+
+</Steps>
+
+<Aside type="tip">
+The checklist display follows the start for you. It lists BATTERY, APU, CARGO, RAMP, CREW DOOR, FUEL and ENGINE START, and shows a hint such as "START APU BEFORE ENGINE SEQUENCE" or "ENGINE SEQUENCE RUNNING - STAND BY". See [Cockpit displays (MFDs)](/reforger-c130-docs/systems/mfd/).
+</Aside>
+
+## Things to know
+
+- **The start is one automatic sequence.** There are no separate start switches for each engine. **Start engines** only works when all four engines are off.
+- **Aborting** (**Abort start (engines starting...)**) stops every engine, including any that had already started. Once at least one engine is turning, the same button shows **Shut down engines**.
+- **Throttle during the start.** The throttle keys work as soon as the first engine begins to turn. Leave the throttle at idle until all four are up. The throttle dial in the cockpit only appears once all four are running. At 0% throttle the engines idle and give no thrust.
+- **Engine sound** fades in near the end of the sequence, so the aircraft is quiet for most of the start.
+- **Fuel.** Engines that get no fuel flame out. Check the fuel quantity before you start. See [Fuel](/reforger-c130-docs/systems/fuel/).
+- **Restarting in the air.** Because the sequence only runs with every engine off, a single engine that fails in flight cannot be restarted on its own. See [Engines and oil](/reforger-c130-docs/systems/engines/) and [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/).
+- **Electrical and hydraulic pages.** The system status display shows generators, buses and hydraulic pressure coming up as the APU and engines start. See [Electrical and APU](/reforger-c130-docs/systems/electrical/) and [Hydraulics](/reforger-c130-docs/systems/hydraulics/).
+
+Next: [Taxi and takeoff](/reforger-c130-docs/basics/taxi-and-takeoff/).

@@ -1,0 +1,72 @@
+---
+title: Radar
+description: What the C-130J air traffic radar detects, its ranges, how to read the Radar display page and how to change range.
+---
+
+This page covers the air traffic radar: what it picks up, how far it sees, and how to read the Radar page on the cockpit displays.
+
+## Opening the radar
+
+The radar is a page on the centre-right cockpit display. Switch that screen to the **Radar** page with the page toggle (see [Cockpit displays](/reforger-c130-docs/systems/mfd/)).
+
+## What it detects
+
+The radar shows **anything that is flying** around you: aircraft, helicopters and any other vehicle more than 15 m above the ground (or above the sea). It shows player-crewed and AI-crewed vehicles alike, and empty ones if they are airborne.
+
+It does not show:
+
+- Vehicles on the ground or below 15 m, such as parked aircraft, cars and aircraft on the runway.
+- Loads inside your own cargo bay.
+- Soldiers, parachutists or dropped crates. Only vehicles count as contacts, so a vehicle coming down under a cargo parachute does show while it is above 15 m.
+
+Range is measured flat over the ground, so a contact high above you still sits at its ground distance on the scope.
+
+## Ranges
+
+Use **Radar range** to step through the ranges. The action is only offered to the pilot and co-pilot while the Radar page is on screen, and its label shows the current setting, for example *Radar range: 20 KM*.
+
+| Range | Sweep time (one full turn) |
+|---|---|
+| 20 km | 6 s |
+| 10 km | 5 s |
+| 5 km | 4 s |
+| 3 km | 3 s |
+| 1 km | 2 s |
+
+After 1 km it wraps back to 20 km. The current range is printed on the display as *20 KM* and so on.
+
+## Reading the display
+
+The scope is a top-down view centred on your aircraft, with your nose pointing to the top of the screen. Your current heading is shown as three digits.
+
+- **Range rings:** three rings at one third, two thirds and the full selected range, each labelled in kilometres (for example 6.7, 13.3 and 20 on the 20 km range).
+- **Sweep line:** a bright line rotates clockwise. On the shorter ranges it leaves a short fading trail.
+- **Contacts:** a contact is painted when the sweep passes over it, then fades until the sweep comes round again. A contact that is not refreshed within slightly more than one sweep disappears.
+- **Heading dots:** a short line of three dots from a contact points the way it is moving. They only appear when it is moving faster than 5 m/s (18 km/h).
+
+### Contact colours
+
+| Colour | Meaning |
+|---|---|
+| Green | Friendly: your own faction or a faction allied to it. |
+| Red | Hostile: any other faction. |
+| Yellow | Unknown: the contact's faction (or your own) cannot be determined. |
+
+### Altitude tag
+
+Next to each contact is its height relative to you, in hundreds of feet:
+
+| Tag | Meaning |
+|---|---|
+| **+12** | 1,200 ft above you. |
+| **-5** | 500 ft below you. |
+| **^** after the number | Climbing faster than 2.5 m/s (about 500 ft/min). |
+| **v** after the number | Descending faster than 2.5 m/s. |
+
+## Good to know
+
+- The radar works on your own game only. Each crew member sees their own picture, and the range setting is per player.
+- It only runs while you are aboard the aircraft.
+- The contact list refreshes every half second, but a contact only moves on the scope when the sweep passes it, just like a real rotating radar. On the 20 km range a fast aircraft can jump noticeably between paints. Switch to a shorter range for a smoother picture.
+
+Next: [Game Master](/reforger-c130-docs/advanced/game-master/).

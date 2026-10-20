@@ -1,0 +1,112 @@
+---
+title: Loading vehicles
+description: How to load vehicles into the C-130J cargo bay, what fits, how cargo affects weight and balance, securing loads, unloading and the Manifest display.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers putting vehicles (and other cargo) into the bay, tying them down, reading the Manifest display and getting them out again on the ground.
+
+## The cargo bay
+
+| Limit | Value |
+| --- | --- |
+| Usable length | 12.2 m |
+| Usable width | 3.0 m |
+| Clearance (height) | 3.0 m |
+| Maximum number of loads | 16 (vehicles and crates combined) |
+
+Loads are packed in a single line down the middle of the bay, nose to tail, starting at the front (cockpit end) and filling back toward the ramp. Each load takes up its own length plus a 0.3 m gap, rounded up to the next half metre. A 1.8 m load, for example, uses 2.5 m of floor.
+
+## What fits
+
+Any vehicle can be loaded as long as its size is within the limits above. Airdrop cargo crates load the same way (see [Cargo crates](/reforger-c130-docs/cargo/crates/)).
+
+You do not need to work out whether something fits. If it does not, the load action greys out and tells you why, with the numbers:
+
+- **Too wide / Too tall / Too long**: the vehicle's size against the bay's.
+- **No room**: how much floor the load needs and how much continuous free floor is left.
+- MOAB rules: the GBU-43/B takes the whole bay on its own. Nothing can be loaded next to it, and it cannot be loaded unless the bay is empty. See [GBU-43/B MOAB](/reforger-c130-docs/advanced/moab/).
+
+The vehicle must also be **empty**. If anyone is sitting in it, the load action does not appear.
+
+## Loading a vehicle
+
+<Steps>
+
+1. Park the C-130 and stop. The mod does not check ramp position or aircraft movement for loading, but loading a parked aircraft is the sensible way to do it.
+2. Get everyone out of the vehicle you want to load.
+3. Walk up to the vehicle's front or bonnet and look for **Load into C-130**. It appears when the vehicle is within **30 m** of the centre of the aircraft.
+4. Read the label before you press it. It shows the load's weight, how far it will move the centre of gravity (for example *CG 12 cm aft*), the new gross weight in tonnes, and how many more of the same load would still fit (*room for 2 more* or *last one that fits*). If the result would put the CG out of limits, the label says **OUT OF LIMITS**.
+5. Use the action. The vehicle is placed in the next free space in the bay.
+6. Tie it down (next section).
+
+</Steps>
+
+If more than one C-130 is in range, the vehicle goes into the nearest one that has room.
+
+## Securing cargo
+
+Every load comes aboard **unsecured** (shown as **LOOSE** on the Manifest). A loose load slides along the bay floor when the aircraft pitches, accelerates, brakes or hits turbulence. It starts moving at roughly 12 degrees of pitch or a moderate push, and can slide at up to 3 m/s.
+
+<Aside type="danger">
+A loose load that slides all the way to the rear of the bay while the ramp is horizontal or fully open falls out of the aircraft and parachutes down. Secure everything before takeoff.
+</Aside>
+
+There are two ways to tie loads down:
+
+- **From the cockpit (pilot or co-pilot):** **Secure cargo (tie down)** secures every load at once. When everything is tied down the same action reads **Release cargo tie-downs** and frees them all.
+- **At the load itself:** walk up to a loaded vehicle or crate and use **Secure cargo (tie down)**, or **Release tie-downs** to free it. This only appears while the item is inside a C-130.
+
+Tie-downs do not stop a release. Unloading, airdropping and LAPES all work on secured loads, so there is no need to release them before a drop.
+
+## Weight and balance
+
+Cargo adds its full weight to the aircraft, and that weight acts where the load actually sits in the bay. A load forward of the centre of gravity pulls the nose down; a load aft of it pushes the nose up. While a load slides aft during an airdrop the nose pitches up until it leaves.
+
+To keep the aircraft from nosing into the runway with a heavy load, cargo weight is not applied on the ground. It fades in from 2 m above the ground and is fully applied by about 12 m. Expect the aircraft to feel heavier just after liftoff. See [Handling and flight model](/reforger-c130-docs/flying/flight-model/).
+
+## Manifest display
+
+The **Manifest** page is on the second cockpit display (the one with the Engine, Weight and Checklist pages). See [Cockpit displays](/reforger-c130-docs/systems/mfd/) for switching pages.
+
+| Field | Meaning |
+| --- | --- |
+| Gross | Total aircraft weight in kg. |
+| Cargo | Total cargo weight in kg. |
+| CG | Centre of gravity offset in cm **FWD** or **AFT** (or **ON REF**). Turns to the warning colour when out of limits. |
+| Count | Loads aboard against capacity, for example *3 / 16*. |
+
+Below the summary is one row per bay position (up to 12 rows are shown) with the load's name, weight, station along the bay in cm, and status:
+
+- **TIED**: secured.
+- **LOOSE**: not secured.
+- **MOVING**: currently rolling out of the bay.
+
+The hint line at the bottom shows, in order of priority: **UNSECURED LOAD - SECURE BEFORE TAKEOFF**, **CG OUT OF LIMITS FORWARD/AFT - REDISTRIBUTE LOAD**, **BAY EMPTY**, or **LOAD SECURED**.
+
+## Unloading on the ground
+
+<Steps>
+
+1. Land and bring the aircraft to a complete stop (below about 2 km/h). It must be on the ground, within 5 m of the surface.
+2. Go to the rear ramp, inside or outside, and use **Unload cargo**. If the aircraft is still rolling the action reads **Unload cargo (stop the plane first)**.
+3. Each use unloads the **rearmost** load. Repeat for the rest.
+
+</Steps>
+
+Unloaded cargo is set down on the ground behind the tail in a grid: three columns 6 m apart, starting 12 m behind the centre of the aircraft, working backward row by row. Vehicles are placed facing the same way as the aircraft. The ramp position does not matter for this.
+
+<Aside type="tip">
+To load a vehicle again it needs to be back within 30 m of the aircraft's centre, which the first rows of the grid are.
+</Aside>
+
+## Unloading from the cockpit
+
+The pilot or co-pilot can also roll loads out from the cockpit with **Unload rear cargo** (one load) or **Unload all cargo** (every load, rearmost first, half a second apart). Both need the ramp at **horizontal**. On the ground the loads simply roll off the ramp; in the air this is an airdrop, covered in [Airdrop](/reforger-c130-docs/cargo/airdrop/).
+
+## If the aircraft is destroyed
+
+If the C-130 is destroyed with cargo aboard, every load is thrown clear and parachutes down where possible.
+
+Next: [Cargo crates](/reforger-c130-docs/cargo/crates/).

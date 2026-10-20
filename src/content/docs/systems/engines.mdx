@@ -1,0 +1,103 @@
+---
+title: Engines and oil
+description: The C-130J's four turboprops, how they spool and make thrust, engine gauges, oil cooler flaps, what makes an engine fail and what that looks like.
+---
+
+This page explains how the four engines behave: thrust and spool-up, the engine gauges, the oil cooler readout, and what happens when an engine fails or runs out of fuel. Starting and stopping engines is covered in [Power-up and engine start](/reforger-c130-docs/basics/engine-start/) and [Shutdown and parking](/reforger-c130-docs/basics/shutdown/).
+
+## The four engines
+
+Engines are numbered from left to right as seen from the cockpit:
+
+| Engine | Position | Fuel tank | Hydraulic pump |
+| --- | --- | --- | --- |
+| 1 | Left outer | LH OUTER | Utility |
+| 2 | Left inner | LH INNER | Utility |
+| 3 | Right inner | RH INNER | Booster |
+| 4 | Right outer | RH OUTER | Booster |
+
+Each engine also drives its own electrical generator. See [Fuel](/reforger-c130-docs/systems/fuel/), [Hydraulics](/reforger-c130-docs/systems/hydraulics/) and [Electrical and APU](/reforger-c130-docs/systems/electrical/).
+
+## Start-up in brief
+
+An engine can only start with the APU running. In the automatic start sequence, engines light one after another, 12.5 seconds apart, and each one takes about 31 seconds to spool up to idle. All four are running a little over a minute after you start the sequence. The full procedure is on [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).
+
+## Thrust and spool
+
+- Each engine gives up to **65 kN** of thrust at full throttle. Every running engine supplies a quarter of the total.
+- Propeller speed follows the throttle from idle to full power within about a second.
+- Each engine pushes from its own place on the wing. If one stops, the thrust becomes uneven and the aircraft yaws toward the dead side (see [Engine failure](#engine-failure)).
+- Reverse thrust turns part of the thrust backwards on the ground. See [Approach and landing](/reforger-c130-docs/basics/landing/).
+
+## Engine gauges
+
+The **Engine** page on the centre-left screen shows each engine's power (HP), turbine temperature (MGT), gas generator speed (NG), propeller speed (NP) and fuel flow. See [Cockpit displays](/reforger-c130-docs/systems/mfd/#engine-page).
+
+| Reading | Stopped | Idle | Full power |
+| --- | --- | --- | --- |
+| HP | 0 | about 200 | about 4,600 |
+| MGT | 0 | about 400 | about 870 |
+| NG | 0 | about 62 % | about 100 % |
+| NP | 0 | 100 % | 100 % |
+
+During start-up the gauges climb as the engine spools. A failed engine winds back down to zero. The four engines read a little differently from each other on purpose.
+
+## Oil cooler flaps
+
+The Systems page shows the oil cooler flap position (OIL CFP %) for each engine:
+
+| Engine state | Flap position |
+| --- | --- |
+| Shut down | 100 % (fully open at rest) |
+| Idle | about 30 % |
+| Full power | about 85 % |
+
+The flaps move slowly toward their new position, like real oil temperature. This is an indication only: the mod does not simulate oil pressure or oil failures, so engines never fail because of oil.
+
+The same page shows the crew liquid oxygen (LOX). It starts at 19.1 L (of 25 L) and drops very slowly, about 0.45 L per hour. It is also an indication only.
+
+## Visual cues
+
+- **Propeller blur**: each propeller switches to a blurred disc once it is turning fast enough, partway through its start, and back to a sharp propeller as it winds down. A stopped or failed engine's propeller is sharp and still.
+- **Exhaust**: each engine shows exhaust as soon as it starts turning, and stops when it winds down.
+- When the aircraft is destroyed, all propellers stop.
+
+## Engine failure
+
+An engine fails, and catches fire, when:
+
+- A heavy hit lands within **5 m** of it. The hit must do at least **80** damage, so small arms fire will not take an engine out, but a missile or cannon shell will. Fire and collision damage do not count.
+- The airframe catches fire. One engine, picked at random, fails and starts burning.
+
+Engines do not wear out. Other damage to the airframe only fails an engine if it sets the airframe on fire.
+
+### Symptoms
+
+When an engine fails:
+
+- It loses all thrust and its propeller winds down to a stop.
+- The aircraft yaws toward the dead engine. Losing an outer engine (1 or 4) yaws it twice as hard as losing an inner one.
+- The Engine page shows ENG FAILURE and the MASTER CAUTION flashes.
+- The Fuel page shows that engine as FAILED.
+- The checklist adds a red ENGINE . . . FAILURE row. In cruise the hint reads ENGINE OUT - TRIM AGAINST THE ASYMMETRY.
+- A failed engine is usually on fire as well. Deal with the fire first. See [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/).
+
+### Flying with an engine out
+
+1. Put out any fire (see [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/#engine-fire-procedure)).
+2. Add power on the remaining engines and use rudder and trim to hold the aircraft straight. See [Trim and flaps](/reforger-c130-docs/flying/trim-and-flaps/).
+3. Set the fuel panel to **ENGINE OUT**. This moves the fuel stranded in the dead engine's tank to a working tank and keeps the wings balanced. See [Fuel](/reforger-c130-docs/systems/fuel/#transfer-modes).
+4. Land as soon as practical.
+
+A failed engine cannot be restarted in flight. It stays failed until the aircraft gets a full repair, which also restores the fire bottles and any blown tyres.
+
+## Fuel flameout
+
+An engine that gets no fuel for **4 seconds** flames out and shuts down. This is different from a failure:
+
+- With the crossfeed open, this only happens when all the fuel is gone.
+- With the crossfeed shut, an engine flames out when its own tank runs dry.
+
+A flamed-out engine is not damaged, but it cannot be restarted on its own: the start sequence only runs with all four engines off. Open the crossfeed or move fuel into its tank to protect the remaining engines; to restart, shut all engines down (on the ground, or as a last resort in the air) and run the start sequence again with the APU running. See [Fuel](/reforger-c130-docs/systems/fuel/#engine-feed-and-crossfeed) and [Power-up and engine start](/reforger-c130-docs/basics/engine-start/).
+
+Next: [Fire and damage](/reforger-c130-docs/systems/fire-and-damage/).
