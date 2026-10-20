@@ -42,6 +42,7 @@ export default defineConfig({
 						{ label: 'Trim and flaps', slug: 'flying/trim-and-flaps' },
 						{ label: 'Autopilot', slug: 'flying/autopilot' },
 						{ label: 'Loiter and orbit', slug: 'flying/loiter' },
+						{ label: 'Flight plan and approach', slug: 'flying/navigation' },
 						{ label: 'Cameras and views', slug: 'flying/cameras' },
 					],
 				},

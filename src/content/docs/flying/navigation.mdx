@@ -1,0 +1,242 @@
+---
+title: Flight plan and approach
+description: Building a flight plan on the map display, the NAV page, drop points, the instrument approach to a runway and the autopilot NAV and APPR modes.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers navigation: building a flight plan with waypoints and drop points, flying it by hand or with the autopilot, and flying an instrument approach ("ILS") to a runway.
+
+## Where to find it
+
+Navigation is spread over three places in the cockpit:
+
+| Where | What you find there | Used for |
+|---|---|---|
+| Centre-right screen (map display) | The **Map** page with the route drawn on it, and the **NAV** page | Building the plan, choosing the runway, watching the route |
+| Outer screens (flight displays) | Mode line, waypoint or runway info, approach scales, drop cue | Flying the route or the approach |
+| Autopilot panel (pilot and co-pilot side) | **AP NAV** and **AP APPR**, next to the normal autopilot controls | Letting the autopilot fly the plan or the approach |
+
+The flight plan and the selected runway belong to the aircraft, not to a player. Everyone aboard sees the same plan, and both pilots can edit it.
+
+<Aside type="note">
+Only the pilot and co-pilot can edit the plan, choose a runway or use the autopilot modes.
+</Aside>
+
+## Using the map display
+
+All planning actions are on the centre-right screen. How to use the screens is explained in [Cockpit displays](/reforger-c130-docs/systems/mfd/) later. In short:
+
+<Steps>
+
+1. Seated as pilot or co-pilot, look at the centre-right screen.
+
+2. Use the page switch until the **Map** or **NAV** page is showing. The pages cycle Map, Radar, Fuel, Systems, STARS, NAV.
+
+3. Use **Focus screen** if you want to read the page up close.
+
+</Steps>
+
+The flight plan and runway actions only appear while the **Map** or **NAV** page is on screen.
+
+## Building a flight plan
+
+A flight plan holds up to 16 waypoints, flown in order. Each one is a normal waypoint (**WPT**) or a drop point (**DROP**).
+
+### Adding waypoints
+
+<Steps>
+
+1. On the map display, select **Flight plan: add waypoints on map**. The big map opens.
+
+2. Click each point you want to fly to, in the order you want to fly them. Every click adds one waypoint to the end of the plan.
+
+3. Close the map when you are done.
+
+</Steps>
+
+The first waypoint you add becomes active straight away, and the aircraft flies directly to it from where it is. The action shows how many waypoints are used, for example *(4/16)*.
+
+### Editing the plan
+
+| Action (map display) | What it does |
+|---|---|
+| **Flight plan: add waypoints on map** | Opens the map. Each click adds a waypoint at the end. |
+| **Flight plan: WP n -> DROP point** | Turns the last waypoint into a drop point. Use it again to turn it back into a normal waypoint. |
+| **Flight plan: direct to WP n** | Makes the next waypoint active and flies straight to it from where you are. After the last waypoint it goes back to WP 1. |
+| **Flight plan: delete WP n** | Removes the last waypoint. |
+| **Flight plan: clear all** | Deletes the whole plan. Hold the action to confirm. |
+
+<Aside type="tip">
+To put a drop point in the middle of the route, add waypoints up to the drop zone, turn that last one into a DROP point, then go on adding the rest.
+</Aside>
+
+### Moving on to the next waypoint
+
+The plan moves on by itself, whether you fly by hand or the autopilot does:
+
+- **Normal waypoints** are passed early, so the turn rolls out on the next leg at a 25° bank instead of overshooting it. A waypoint also counts as passed within 250 m of it, or once you have flown past it.
+- **Drop points** are never cut short. They only count as passed once you have flown over them.
+- Nothing moves on while you taxi or are parked (below about 30 kt ground speed).
+
+## The NAV page
+
+The **NAV** page shows the whole plan, the approach runway and the approach scales on one screen. From top to bottom:
+
+| Area | What it shows |
+|---|---|
+| Mode line | What the autopilot is doing: *AP OFF*, *AP HDG*, *AP LNAV* (with *TO WP n*), *AP APPR ARM*, *AP LOC GS ARM*, *AP LOC GS*, *AP LOITER* or *AP STARS*. |
+| Waypoint list (12 rows) | One row per waypoint: number, type (WPT or DROP), map grid, bearing from the aircraft, distance along the route and time to go at your present ground speed. The active waypoint is marked *>* and shown in magenta. Drop points are amber. Passed waypoints are dimmed and read *PASSED*. |
+| Total line | Distance and time to go for the rest of the plan (*TO GO*), *PLAN COMPLETE* once every waypoint is passed, or how many waypoints do not fit on the list. |
+| Approach block | Selected runway name, landing course (*CRS*), length, threshold elevation and glide slope angle, then distance, time and bearing to the threshold. |
+| LOC / GS scales | The approach scales with magenta diamonds. See [Reading the scales](#reading-the-scales). |
+| Deviation lines | How far off the centreline you are (degrees and metres, L or R), how far off the glide path (HI or LO), your height above the threshold, the glide path height at your position and the decision height. *GEAR UP!* in red if the gear is still up on short final. |
+| Drop countdown | Large amber text such as *DROP WP 3: RELEASE IN 24 S*. It turns red in the last 10 seconds and flashes *RELEASE NOW* (or *OVERHEAD NOW*) at the point. |
+| Footer | A short reminder of where the controls are, and what the runway search found (for example *ROAD NET: 2 RWY ...*). |
+
+## The route on the Map page
+
+The **Map** page draws the flight plan and the runway over the moving map. The map stays north-up and centred on your aircraft, and the route follows the map zoom.
+
+| Symbol | Meaning |
+|---|---|
+| Thick magenta line | The active leg, to the active waypoint. |
+| Thin magenta line from the aircraft | Straight line from you to the active waypoint. |
+| White lines and circles | Legs and waypoints still ahead. |
+| Dim grey-green lines and circles | Legs and waypoints already flown. |
+| Amber circle with a cross, labelled *Dn* | Drop point. |
+| Numbers next to the circles | Waypoint numbers, the same as on the NAV page. |
+| Cyan strip with a dashed line | The selected runway, with its centreline drawn 15 km out (one dash per kilometre) and the runway name. |
+
+## Drop points
+
+A drop point gives you a countdown to the release:
+
+- **With cargo in the bay**, the countdown uses the release computer's predicted impact point, including wind, fall time and the roll out of the ramp. *RELEASE IN ...* reaches zero when a load released now would land on the drop point.
+- **With an empty bay** (for example for paratroopers), it counts down to flying over the point: *OVERHEAD IN ...*.
+
+The release itself is still yours: ramp, jump light and **Release cargo** work exactly as described in [Airdrop](/reforger-c130-docs/cargo/airdrop/) and [Paratroopers](/reforger-c130-docs/cargo/paratroopers/).
+
+<Aside type="tip">
+Fly the last minute before the drop point straight and level. The countdown assumes your present track and ground speed.
+</Aside>
+
+## Instrument approach ("ILS")
+
+Once a runway is selected, the aircraft works out a centreline (localizer) and a 3° glide path for it, like an ILS. You can fly it by hand with the scales, or let the autopilot fly it down to decision height.
+
+### Choosing the runway
+
+**Approach runway: ... (next)** on the map display steps through the runways around you, nearest first, and then back to none. Each runway appears twice, once for each landing direction, named after its landing course and map grid (for example *RWY 27 045 123*).
+
+Runways are found automatically: long, very wide, straight strips within 40 km of the aircraft. The footer of the NAV page shows what was found.
+
+### Laying down a runway by hand
+
+If no runway is found, or you want to land on a field strip, lay one down yourself:
+
+<Steps>
+
+1. Select **Approach: lay down runway on map (2 clicks)**. The map opens.
+
+2. Click the **threshold**: the end where you touch down.
+
+3. Click the **far end** of the runway. It must be at least 150 m away. The map closes and the runway appears as *USR nn*.
+
+</Steps>
+
+### Reading the scales
+
+The NAV page and the flight displays use the usual ILS convention: the diamond shows where the centreline or glide path is, so you steer towards the diamond.
+
+- **Localizer (horizontal scale)**: diamond to the left means the centreline is to your left, so turn left. Full scale is 2.5°.
+- **Glide slope (vertical scale)**: diamond below the centre means you are above the path, so descend more. Full scale is 0.7°.
+- The scales only appear in front of the runway, within about 30 km and roughly lined up with it. Elsewhere the NAV page reads *NO LOC / GS SIGNAL*.
+
+The glide path aims at a touchdown point 300 m past the threshold.
+
+## On the flight displays
+
+The outer screens show what you need while flying the route or the approach:
+
+| Indication | Where | Meaning |
+|---|---|---|
+| Mode line (green) | Under the autopilot line at the top | Autopilot mode, for example *LNAV WP3*, *APPR ARM*, *LOC GS*. |
+| Info line (magenta) | Top of the attitude display | On an approach: runway name and distance to the threshold. Otherwise: active waypoint, bearing and distance (for example *WP3 245 12.4KM*). |
+| Localizer scale | Bottom of the attitude display | Dots with a magenta diamond. Steer towards it. |
+| Glide slope scale | Right edge of the attitude display | Dots with a magenta diamond. Diamond below the centre: you are high. |
+| Drop cue (amber) | Lower part of the attitude display | *DROP 24 S*, then flashing *RELEASE* or *OVERHEAD* at the point. |
+| GEAR (red, flashing) | Top right | Gear still up on final, below about 600 m and within 12 km of the runway. |
+
+## Autopilot: NAV and APPR
+
+Two actions on the autopilot panel let the autopilot fly the plan or the approach. Each seat's panel has its own. As with the normal autopilot, it belongs to the seat that engaged it, and moving the stick disconnects it. See [Autopilot](/reforger-c130-docs/flying/autopilot/).
+
+| Action (autopilot panel) | What it does |
+|---|---|
+| **AP NAV - fly flight plan** | Engages the autopilot if it is off and flies the flight plan. Use it again (**AP NAV off**) to go back to holding your present heading. |
+| **AP APPR - coupled approach RWY ...** | Engages the autopilot if it is off and flies the approach to the selected runway. Use it again (**AP APPR off**) to keep the autopilot on, holding your present heading, altitude and speed. |
+
+If an action cannot be used, its label says why, for example *no flight plan* or *no approach runway selected*.
+
+### NAV mode
+
+- Flies each leg of the plan, correcting for wind, with at most 30° of bank.
+- **Altitude and speed stay yours.** Set them with **AP Altitude** and **AP Speed** as usual.
+- **Terrain**: it looks ahead along the flight path and does not descend below about 60 m above the ground. If high ground comes up too fast, it pulls up at full power until clear, then carries on.
+- **End of the plan**: if a runway is selected, NAV changes to APPR by itself. Otherwise the aircraft starts a loiter orbit around the last waypoint, as in [Loiter and orbit](/reforger-c130-docs/flying/loiter/).
+
+### APPR mode
+
+The approach runs through three phases, shown on the NAV page and the flight displays:
+
+| Phase | What the autopilot does |
+|---|---|
+| *APPR ARM* | Flies to a point 12 km out on the extended centreline, or straight onto the centreline if you are already roughly lined up. Descends to just below the glide path there, staying clear of the terrain. |
+| *LOC GS ARM* | Centreline captured. Follows it (at most 12° of bank on the last 6 km), slows to 130 kt and holds altitude until the glide path comes down to the aircraft. |
+| *LOC GS* | Glide path captured. Descends on the 3° path at approach speed. |
+
+The autopilot hands back to you, with the autopilot disconnect tone and a message on screen, when:
+
+- **you reach minimums**: 200 ft above the threshold. You fly the flare and landing by hand,
+- **the approach becomes unstable**: below about 300 m with the localizer beyond full scale, or the glide slope beyond 1.5 times full scale. Go around, or correct by hand,
+- the aircraft passes the threshold with the autopilot still on, or the runway selection is removed.
+
+<Aside type="caution">
+The autopilot does not lower the gear or the flaps. Configure the aircraft yourself on the approach. *GEAR* on the flight displays and *GEAR UP!* on the NAV page warn you if the gear is still up on short final.
+</Aside>
+
+## Example: supply drop and return
+
+<Steps>
+
+1. On the ground, look at the centre-right screen and switch to the **NAV** page.
+
+2. Add waypoints on the map: a departure turn, two route points, the drop zone, a point after the drop and a point near home.
+
+3. Turn the drop zone into a DROP point straight after adding it, then add the rest.
+
+4. Use **Approach runway** until your home runway is selected in the direction you want to land. Check on the **Map** page that the cyan strip and centreline point the right way.
+
+5. Take off by hand. Climb, set **AP Altitude** and **AP Speed**, then select **AP NAV**.
+
+6. Before the drop zone, open the ramp and set the jump light as usual, and watch the drop countdown. Release at zero.
+
+7. After the last waypoint the autopilot changes to APPR by itself and flies the intercept, the centreline and the glide path.
+
+8. Lower the gear and flaps on final. At 200 ft the tone sounds: land by hand.
+
+</Steps>
+
+## Troubleshooting
+
+| Problem | What to check |
+|---|---|
+| The planning actions do not appear | Switch the centre-right screen to the **Map** or **NAV** page, and sit in the pilot or co-pilot seat. |
+| Map clicks do not add waypoints | Close any minimap first. Each click on the big map adds one waypoint, up to 16. |
+| **Approach runway** finds nothing | Read the footer of the NAV page. If no runway was found, lay one down on the map. |
+| **AP NAV** or **AP APPR** cannot be selected | The label says why. The autopilot may also be engaged from the other seat. |
+| The route is drawn in the wrong place on the Map page | Change the map zoom once so the route picks up the new scale. |
+| The aircraft sits above or below the glide path | Small offsets are corrected slowly. If it stays off, fly the rest by hand. |
+
+Next: [Cameras and views](/reforger-c130-docs/flying/cameras/).

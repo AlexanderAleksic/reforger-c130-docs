@@ -15,7 +15,7 @@ The screens sit in a row across the main panel. The two outer screens are flight
 | --- | --- | --- |
 | Outer left | Flight display | Flight display |
 | Centre left | **Engine**, **Weight**, **Checklist**, **Manifest** | Engine |
-| Centre right | **Map** (with the release computer), **Radar**, **Fuel**, **Systems** | Map |
+| Centre right | **Map** (with the release computer and the route), **Radar**, **Fuel**, **Systems**, **STARS**, **NAV** | Map |
 | Outer right | Flight display | Flight display |
 
 All pages refresh several times a second. They read live data from the aircraft, so a number that moves means something in the aircraft has actually changed.
@@ -40,6 +40,7 @@ Only the pilot and co-pilot can use the screens. Each screen has an interaction 
 | **Release scale** | Centre right, Map page only | Sets the scale of the release-computer marker. |
 | **Release cargo** | Centre right | Drops the next load. See [Airdrop](/reforger-c130-docs/cargo/airdrop/). |
 | **Radar range: N KM** | Centre right, Radar page only | Changes the radar range. See [Radar](/reforger-c130-docs/advanced/radar/). |
+| **Flight plan: ...**, **Approach runway: ...** | Centre right, Map and NAV pages | Build the flight plan and choose the approach runway. See [Flight plan and approach](/reforger-c130-docs/flying/navigation/). |
 
 The zoom, scale and range actions only appear while their page is on screen, so the action list stays short on the other pages.
 
@@ -74,6 +75,7 @@ The outer left and outer right screens are primary flight displays. They show:
 - G load.
 - A pitch and roll attitude display.
 - Autopilot status: which seat has the autopilot engaged and whether altitude hold is active. See [Autopilot](/reforger-c130-docs/flying/autopilot/).
+- Navigation: the autopilot mode, the active waypoint or approach runway, the localizer and glide slope scales, the drop countdown and a GEAR warning on final. See [Flight plan and approach](/reforger-c130-docs/flying/navigation/).
 
 The cockpit also has a separate small attitude display.
 
@@ -124,6 +126,12 @@ A list of every cargo slot in the bay with its load name, weight, position and t
 ## Map page and release computer
 
 The default page on the centre-right screen is a moving map with your aircraft symbol. Over the map, the release computer draws a crosshair where the next load released from the bay would land, with a status line, the distance to impact, a grid reference and a countdown. The **Release scale** action sets how the marker is scaled. Leave it on **AUTO** so the marker follows the map zoom by itself. Using the release computer for drops is covered in [Airdrop](/reforger-c130-docs/cargo/airdrop/).
+
+The Map page also draws the flight plan and the selected runway. See [Flight plan and approach](/reforger-c130-docs/flying/navigation/#the-route-on-the-map-page).
+
+## NAV page
+
+The last page on the centre-right screen lists the flight plan, the approach runway, the approach scales and the drop countdown. It is described in [Flight plan and approach](/reforger-c130-docs/flying/navigation/#the-nav-page).
 
 ## Radar page
 
