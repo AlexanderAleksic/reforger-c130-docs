@@ -1,0 +1,96 @@
+---
+title: Aircraft variants
+description: The three C-130 entries in the mod - the standard C-130J, the LC-130 with JATO rocket bottles and the MC-130E Combat Talon I with the Fulton STARS yoke - and how JATO and STARS work.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This page covers the two special versions of the aircraft: the LC-130 with JATO rocket bottles for short takeoffs, and the MC-130E Combat Talon I with the Fulton STARS yoke for picking people up in flight.
+
+## The three entries
+
+All three fly, carry cargo and use every system exactly as described in the rest of this manual. They differ only in what is fitted:
+
+| Entry | What is different |
+|---|---|
+| **C130J Super Hercules** | The standard aircraft. No JATO, no STARS yoke: it cannot make Fulton pickups. |
+| **LC-130 (JATO)** | Eight JATO rocket bottles, four on each rear paratroop door, for a shorter and faster takeoff. |
+| **MC-130E Combat Talon I (Fulton STARS)** | The Fulton STARS nose yoke is fitted and always out, ready for air pickups. |
+
+The variants are next to the C130J in the Game Master vehicle list. See [Game Master](/reforger-c130-docs/advanced/game-master/).
+
+## LC-130 (JATO)
+
+JATO (jet-assisted takeoff) bottles are solid rockets. Fired together they push the aircraft forward on top of the engines, so it reaches rotation speed sooner and on less runway.
+
+| Value | |
+|---|---|
+| Bottles | 8, four on each rear paratroop door |
+| Extra thrust | about 52 kN in total (6.5 kN per bottle), about 29 % on top of the four engines at full power |
+| Burn time | 15 seconds, with a short build-up after ignition and a tail-off at the end |
+| Uses | One firing per set of bottles |
+
+The thrust is angled slightly upwards along the bottles and acts through the centre of gravity, so firing them does not pitch the nose up or down.
+
+### Firing the bottles
+
+The JATO action is with the throttle, next to **Throttle** and **Thrust reverse**, for the pilot and co-pilot.
+
+<Steps>
+
+1. Line up and set takeoff flaps as usual (see [Taxi and takeoff](/reforger-c130-docs/basics/taxi-and-takeoff/)).
+
+2. Go to full throttle and release the brakes.
+
+3. Select **JATO: FIRE (8 bottles, 15 s)**. The bottles light with a bang, flames and white smoke, and the label counts down: *JATO: burning 12 s*.
+
+4. Rotate as usual. The burn ends by itself after 15 seconds.
+
+</Steps>
+
+The bottles can be fired at any time, on the ground or in the air, but they are most useful at the start of the takeoff roll on a short strip.
+
+<Aside type="tip">
+Fire early. The extra push matters most while the aircraft is slow; fired late in the roll, much of the 15 seconds is spent already airborne.
+</Aside>
+
+### Re-arming
+
+Once burnt out, the label reads **JATO: spent (re-arm on the ground, stopped)**. Land, come to a stop on the ground, and the action becomes **JATO: re-arm bottles**. One press fits a fresh set.
+
+The empty bottles stay on the doors until then. If the aircraft is destroyed, they disappear with it.
+
+## MC-130E Combat Talon I (Fulton STARS)
+
+The MC-130E carries the Fulton STARS (Surface-To-Air Recovery System) yoke: two arms on the nose that guide a balloon line into the aircraft's catch point. On this aircraft the yoke is a fixed part of the airframe:
+
+- it swings out by itself about 3 seconds after the aircraft is placed, and stays out,
+- there is no action to deploy or retract it.
+
+On the standard C-130J the yoke is not fitted. Its STARS page reads *YOKE NOT FITTED (MC-130E ONLY)*, and pressing the old STARS hotkey only shows a reminder that pickups need the MC-130E.
+
+### How a pickup works
+
+<Steps>
+
+1. On the ground, a player uses a **C-130 Fulton STARS Kit**: he puts on the harness and releases the balloon, which goes up on a 150 m line. Kits can be placed by the Game Master, carried in the aircraft and airdropped.
+
+2. The MC-130E flies into the line. It is caught when it passes the catch point at the nose, within about 7 m to the side, at least 15 m above the harness and faster than about 25 m/s (about 50 kt).
+
+3. The player is towed behind the aircraft on the line.
+
+4. Open the cargo ramp to winch him aboard.
+
+</Steps>
+
+While a balloon is up anywhere, or a player is on the line, a STARS panel at the top of the pilot's screen guides him to the nearest balloon: distance, bearing and the height band in which the line can be caught. The **STARS** page on the centre-right screen shows the yoke, the ramp and the balloons.
+
+### Auto-intercept
+
+With the yoke out, the cockpit offers **STARS auto-intercept: FLY TO BALLOON** next to the flare controls. The autopilot then flies the pickup to the nearest balloon: it sets up about 4 km out on the approach course, slows to 140 kt and flies at the balloon. The moment the line is caught it hands back to the pilot with the autopilot disconnect tone. If the ground comes up too fast on the way in, it pulls up and sets up again.
+
+<Aside type="note">
+The auto-intercept can only start when a balloon is up and no pickup is already on the line. Its label says why if it cannot be used.
+</Aside>
+
+Next: [GBU-43/B MOAB](/reforger-c130-docs/advanced/moab/).

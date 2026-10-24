@@ -17,6 +17,8 @@ As the load leaves it keeps the aircraft's speed plus a push out of the ramp, th
 
 The release computer is built into the **Map** page of the map display. While that page is shown it draws a crosshair at the point where the **next** load would land if you released it now. See [Cockpit displays](/reforger-c130-docs/systems/mfd/) for switching pages.
 
+It works out the fall from the end of the ramp, where the load really leaves, with the push out of the ramp, the time the parachute takes to open, the load's weight and the wind. Flown straight and level from the press of the button until the load is out, a drop lands within a few tens of metres of the crosshair.
+
 What the page shows:
 
 - **Crosshair** with the distance to the impact point (metres, or km above 1,000 m). If the point is beyond the edge of the display the crosshair parks at the edge and the status line says **OFF SCALE**.
@@ -67,14 +69,14 @@ Under the canopy:
 
 Vehicles ride the drop protected: they take no damage during the descent and for 5 seconds after touchdown, and their handbrake is set on landing so they do not roll away. Crates settle in place a few seconds after landing.
 
-Every dropped load gets a **CDS DROP** marker on everyone's map. Crates are labelled *CARGO*, vehicles with the vehicle's name. The marker follows the predicted landing point during the descent, then marks the actual landing spot. A crate's marker is removed when someone opens it (see [Cargo crates](/reforger-c130-docs/cargo/crates/#at-the-drop-zone)).
+Every dropped load gets a **CDS DROP** marker on everyone's map. Crates are labelled *CARGO*, vehicles with the vehicle's name. The marker follows the predicted landing point during the descent, including the forward speed the load still carries just after it leaves the ramp, then marks the actual landing spot. A crate's marker is removed when someone opens it (see [Cargo crates](/reforger-c130-docs/cargo/crates/#at-the-drop-zone)).
 
 ## Choosing speed and altitude
 
 The mod does not set a required drop speed or altitude. The release computer works at any height above the ground, as long as the impact point is not above you. Keep these points in mind:
 
 - **Lower is more accurate.** Fall time drives wind drift, so a shorter fall drifts less. A crate dropped from 300 m above the ground falls for about 53 seconds; from 150 m, about 28 seconds.
-- **Fly straight and level.** The computer predicts from your current speed and direction. Turning, climbing or diving during the roll-out moves the real exit point away from the one it solved for.
+- **Fly straight and level.** The computer predicts from your current speed and direction. Turning, climbing, diving or changing power during the roll-out moves the real exit point away from the one it solved for. The roll-out takes several seconds, and at 70 m/s that is a few hundred metres of flying, so hold everything steady from the moment you press **RELEASE** until the load is out.
 - **Slower means a shorter throw.** The forward throw grows with ground speed.
 - **Watch the trim.** A load rolling aft pitches the nose up until it leaves. Be ready to hold the nose down. See [Handling and flight model](/reforger-c130-docs/flying/flight-model/).
 

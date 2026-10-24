@@ -72,6 +72,7 @@ export default defineConfig({
 				{
 					label: 'Advanced',
 					items: [
+						{ label: 'Aircraft variants', slug: 'advanced/variants' },
 						{ label: 'GBU-43/B MOAB', slug: 'advanced/moab' },
 						{ label: 'Radar', slug: 'advanced/radar' },
 						{ label: 'Game Master', slug: 'advanced/game-master' },

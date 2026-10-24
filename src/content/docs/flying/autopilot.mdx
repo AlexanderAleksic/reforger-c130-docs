@@ -58,7 +58,7 @@ The speed the autopilot holds is your actual speed through the world (it include
 | Maximum pitch | ±12° |
 | Throttle | Adjusted continuously to hold the target speed |
 
-- It turns toward a new heading by the shortest way.
+- It turns toward a new heading by the shortest way. If the new heading is almost straight behind you (more than 150° away), it picks a side and keeps turning that way until the heading is less than 120° away, instead of wavering between left and right.
 - A large altitude change is flown at up to 20 m/s, easing off as it nears the target.
 - The autopilot does not use the rudder.
 - Auto-trim and mouse flight pause while it is engaged.

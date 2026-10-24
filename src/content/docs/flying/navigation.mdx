@@ -49,19 +49,50 @@ A flight plan holds up to 16 waypoints, flown in order. Each one is a normal way
 
 1. On the map display, select **Flight plan: add waypoints on map**. The big map opens.
 
-2. Click each point you want to fly to, in the order you want to fly them. Every click adds one waypoint to the end of the plan.
+2. Click each point you want to fly to, in the order you want to fly them. Every click adds one waypoint to the end of the plan, and a marker (*WP 1*, *WP 2*, ...) appears on the map a moment later.
 
-3. Close the map when you are done.
+3. Press <kbd>Esc</kbd> when you are done. The map also closes by itself once the plan is full.
 
 </Steps>
 
-The first waypoint you add becomes active straight away, and the aircraft flies directly to it from where it is. The action shows how many waypoints are used, for example *(4/16)*.
+The first waypoint you add becomes active straight away, and the aircraft flies directly to it from where it is. The action shows how many waypoints are used, for example *(4/16)*. Opening the map again shows the points you already have, and new clicks are added after them.
+
+### Keys while the map is open
+
+| Key | What it does |
+|---|---|
+| Left click | Adds a waypoint at the end of the plan. A click on an existing point grabs it instead (see below). |
+| Drag a point | Moves that waypoint to where you let go. |
+| <kbd>T</kbd> | Turns the last waypoint into a drop point, or back into a normal waypoint. |
+| <kbd>Backspace</kbd> | Removes the last waypoint. Press it again to remove more. |
+| <kbd>Esc</kbd> | Closes the map. |
+
+On the big map the points are shown only while you edit the plan. Their colour tells you what they are:
+
+| Marker | Meaning |
+|---|---|
+| White, *WP n* | Normal waypoint. |
+| Orange, *WP n DROP* | Drop point. |
+| Red, *WP n - TOO TIGHT* | The aircraft cannot turn tightly enough to fly this point cleanly. See [Turns the aircraft cannot make](#turns-the-aircraft-cannot-make). |
+
+The markers look like normal map markers, with your name under them. They are only on your own map and disappear when you close it.
+
+### Turns the aircraft cannot make
+
+The plan checks every point against the C-130's turning circle. It assumes the same 25° bank the plan uses for its turns, at 140 kt or your present ground speed, whichever is higher. At 140 kt that is a turn radius of about 1.1 km, so a full turn-round needs about 2.2 km.
+
+A point is shown in red when:
+
+- the turns at both ends of the leg to it need more room than the leg is long, for example a zig-zag of points only a few hundred metres apart,
+- it is so close beside the flight path that the aircraft would have to fly a circle to reach it. This is checked after a drop point (which is flown over, so the turn only starts there), after a near reversal, and from the aircraft itself once it is flying.
+
+Drag the point further away until it is no longer red. The check runs all the time, so a point can also turn red in flight if you are faster than planned. Red points are drawn red on the **Map** page too.
 
 ### Editing the plan
 
 | Action (map display) | What it does |
 |---|---|
-| **Flight plan: add waypoints on map** | Opens the map. Each click adds a waypoint at the end. |
+| **Flight plan: add waypoints on map** | Opens the map. Each click adds a waypoint at the end. See [Keys while the map is open](#keys-while-the-map-is-open). |
 | **Flight plan: WP n -> DROP point** | Turns the last waypoint into a drop point. Use it again to turn it back into a normal waypoint. |
 | **Flight plan: direct to WP n** | Makes the next waypoint active and flies straight to it from where you are. After the last waypoint it goes back to WP 1. |
 | **Flight plan: delete WP n** | Removes the last waypoint. |
@@ -104,6 +135,7 @@ The **Map** page draws the flight plan and the runway over the moving map. The m
 | Thin magenta line from the aircraft | Straight line from you to the active waypoint. |
 | White lines and circles | Legs and waypoints still ahead. |
 | Dim grey-green lines and circles | Legs and waypoints already flown. |
+| Red circle | A waypoint the aircraft cannot turn tightly enough for. See [Turns the aircraft cannot make](#turns-the-aircraft-cannot-make). |
 | Amber circle with a cross, labelled *Dn* | Drop point. |
 | Numbers next to the circles | Waypoint numbers, the same as on the NAV page. |
 | Cyan strip with a dashed line | The selected runway, with its centreline drawn 15 km out (one dash per kilometre) and the runway name. |
@@ -145,6 +177,8 @@ If no runway is found, or you want to land on a field strip, lay one down yourse
 
 </Steps>
 
+After the first click a *RWY THRESHOLD* marker shows where you set the threshold. Press <kbd>Esc</kbd> to cancel before the second click.
+
 ### Reading the scales
 
 The NAV page and the flight displays use the usual ILS convention: the diamond shows where the centreline or glide path is, so you steer towards the diamond.
@@ -181,10 +215,10 @@ If an action cannot be used, its label says why, for example *no flight plan* or
 
 ### NAV mode
 
-- Flies each leg of the plan, correcting for wind, with at most 30° of bank.
+- Flies each leg of the plan, correcting for wind, with at most 30° of bank. A waypoint behind you is no problem: the aircraft turns round in one direction and flies back to it.
 - **Altitude and speed stay yours.** Set them with **AP Altitude** and **AP Speed** as usual.
-- **Terrain**: it looks ahead along the flight path and does not descend below about 60 m above the ground. If high ground comes up too fast, it pulls up at full power until clear, then carries on.
-- **End of the plan**: if a runway is selected, NAV changes to APPR by itself. Otherwise the aircraft starts a loiter orbit around the last waypoint, as in [Loiter and orbit](/reforger-c130-docs/flying/loiter/).
+- **Terrain**: it does not descend below about 60 m above the highest thing under the flight path: the ground, trees or buildings. It looks about 30 seconds ahead, both straight ahead and along the line to the active waypoint, so a hill on the next leg is seen before the turn. It counts on climbing only about 6 m/s, so it starts climbing early. If high ground still comes up too fast, it pulls up at full power with the wings level until clear, then carries on.
+- **End of the plan**: if a runway is selected, NAV changes to APPR by itself. Otherwise the autopilot turns off at the last waypoint and hands the aircraft back to you, with the autopilot disconnect tone and the message *Last waypoint reached - autopilot off, you have control.*
 
 ### APPR mode
 
@@ -233,7 +267,9 @@ The autopilot does not lower the gear or the flaps. Configure the aircraft yours
 | Problem | What to check |
 |---|---|
 | The planning actions do not appear | Switch the centre-right screen to the **Map** or **NAV** page, and sit in the pilot or co-pilot seat. |
-| Map clicks do not add waypoints | Close any minimap first. Each click on the big map adds one waypoint, up to 16. |
+| Map clicks do not add waypoints | Close any minimap first. Each click on the big map adds one waypoint, up to 16. A click on or right next to an existing point grabs that point instead of adding a new one. |
+| The big map does not close | Press <kbd>Esc</kbd>. |
+| A point is red | The turn is too tight for the C-130. Drag the point further away. See [Turns the aircraft cannot make](#turns-the-aircraft-cannot-make). |
 | **Approach runway** finds nothing | Read the footer of the NAV page. If no runway was found, lay one down on the map. |
 | **AP NAV** or **AP APPR** cannot be selected | The label says why. The autopilot may also be engaged from the other seat. |
 | The route is drawn in the wrong place on the Map page | Change the map zoom once so the route picks up the new scale. |
